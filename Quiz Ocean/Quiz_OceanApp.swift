@@ -9,12 +9,24 @@ import SwiftUI
 
 @main
 struct Quiz_OceanApp: App {
-    let persistenceController = PersistenceController.shared
+    @StateObject private var chatStore = ChatStore()
+    @Environment(\.scenePhase) var scenePhase
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            TabedView()
+                .environmentObject(chatStore)
+                .onAppear {
+                    chatStore.setup()   // loads conversations and settings
+                }
+                .onChange(of: scenePhase) { newPhase in
+                    // You may need to handle the inactive phase only.
+                    if newPhase == .inactive || newPhase == .background {
+                        chatStore.save()    // saves conversations and settings
+                    } else {
+                        // active phase: do nothing
+                    }
+                }
         }
     }
 }

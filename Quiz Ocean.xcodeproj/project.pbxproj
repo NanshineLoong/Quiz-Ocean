@@ -8,21 +8,59 @@
 
 /* Begin PBXBuildFile section */
 		3352945B2BB6B44400763962 /* Quiz_OceanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352945A2BB6B44400763962 /* Quiz_OceanApp.swift */; };
-		3352945D2BB6B44400763962 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352945C2BB6B44400763962 /* ContentView.swift */; };
+		3352945D2BB6B44400763962 /* ChatSectiontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352945C2BB6B44400763962 /* ChatSectiontView.swift */; };
 		3352945F2BB6B44600763962 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3352945E2BB6B44600763962 /* Assets.xcassets */; };
 		335294622BB6B44600763962 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335294612BB6B44600763962 /* Preview Assets.xcassets */; };
-		335294642BB6B44600763962 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294632BB6B44600763962 /* Persistence.swift */; };
 		335294672BB6B44600763962 /* Quiz_Ocean.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 335294652BB6B44600763962 /* Quiz_Ocean.xcdatamodeld */; };
+		335294702BB6C56400763962 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352946F2BB6C56400763962 /* ChatView.swift */; };
+		335294722BB6C59000763962 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294712BB6C59000763962 /* TabView.swift */; };
+		335294742BB6C59F00763962 /* HomeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294732BB6C59F00763962 /* HomeSectionView.swift */; };
+		335294772BB93A5300763962 /* TestFromCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294762BB93A5300763962 /* TestFromCategoryView.swift */; };
+		3352947A2BB9405D00763962 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294792BB9405D00763962 /* Tests.swift */; };
+		3352947C2BB945BC00763962 /* TestRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352947B2BB945BB00763962 /* TestRow.swift */; };
+		3352947E2BB9626400763962 /* ChatIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352947D2BB9626400763962 /* ChatIndexView.swift */; };
+		335294812BB962B900763962 /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294802BB962B900763962 /* ChatStore.swift */; };
+		335294842BB963F100763962 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294832BB963F100763962 /* Conversation.swift */; };
+		335294862BB9651300763962 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294852BB9651300763962 /* Chat.swift */; };
+		335294882BB9668400763962 /* OpenAIChatConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294872BB9668400763962 /* OpenAIChatConversation.swift */; };
+		3352948A2BB97AEF00763962 /* ChatSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294892BB97AEF00763962 /* ChatSettings.swift */; };
+		3352948C2BB97BAD00763962 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352948B2BB97BAD00763962 /* AppConstant.swift */; };
+		3352948E2BB97CD000763962 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352948D2BB97CD000763962 /* UserSettings.swift */; };
+		335294902BB97DDB00763962 /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352948F2BB97DDB00763962 /* ChatManager.swift */; };
+		335294932BB97E5B00763962 /* OpenAIChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294922BB97E5B00763962 /* OpenAIChatAPI.swift */; };
+		335294952BB97EA000763962 /* OpenAIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294942BB97EA000763962 /* OpenAIMessage.swift */; };
+		335294972BB97F8A00763962 /* OpenAIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294962BB97F8A00763962 /* OpenAIEndPoint.swift */; };
+		3352949B2BB9809700763962 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352949A2BB9809700763962 /* UserSettingsView.swift */; };
+		3352949D2BB981CA00763962 /* ChatSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352949C2BB981CA00763962 /* ChatSettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		335294572BB6B44400763962 /* Quiz Ocean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz Ocean.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3352945A2BB6B44400763962 /* Quiz_OceanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_OceanApp.swift; sourceTree = "<group>"; };
-		3352945C2BB6B44400763962 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3352945C2BB6B44400763962 /* ChatSectiontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSectiontView.swift; sourceTree = "<group>"; };
 		3352945E2BB6B44600763962 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		335294612BB6B44600763962 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		335294632BB6B44600763962 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		335294662BB6B44600763962 /* Quiz_Ocean.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quiz_Ocean.xcdatamodel; sourceTree = "<group>"; };
+		3352946F2BB6C56400763962 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		335294712BB6C59000763962 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		335294732BB6C59F00763962 /* HomeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionView.swift; sourceTree = "<group>"; };
+		335294762BB93A5300763962 /* TestFromCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFromCategoryView.swift; sourceTree = "<group>"; };
+		335294792BB9405D00763962 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		3352947B2BB945BB00763962 /* TestRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRow.swift; sourceTree = "<group>"; };
+		3352947D2BB9626400763962 /* ChatIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatIndexView.swift; sourceTree = "<group>"; };
+		335294802BB962B900763962 /* ChatStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
+		335294832BB963F100763962 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		335294852BB9651300763962 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		335294872BB9668400763962 /* OpenAIChatConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatConversation.swift; sourceTree = "<group>"; };
+		335294892BB97AEF00763962 /* ChatSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSettings.swift; sourceTree = "<group>"; };
+		3352948B2BB97BAD00763962 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
+		3352948D2BB97CD000763962 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		3352948F2BB97DDB00763962 /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
+		335294922BB97E5B00763962 /* OpenAIChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIChatAPI.swift; sourceTree = "<group>"; };
+		335294942BB97EA000763962 /* OpenAIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIMessage.swift; sourceTree = "<group>"; };
+		335294962BB97F8A00763962 /* OpenAIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIEndPoint.swift; sourceTree = "<group>"; };
+		3352949A2BB9809700763962 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
+		3352949C2BB981CA00763962 /* ChatSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,12 +93,15 @@
 		335294592BB6B44400763962 /* Quiz Ocean */ = {
 			isa = PBXGroup;
 			children = (
+				335294912BB97E2F00763962 /* OpenAI */,
+				3352947F2BB9628200763962 /* ViewModels */,
+				335294782BB9404A00763962 /* Models */,
+				335294752BB93A0F00763962 /* Views */,
 				3352945A2BB6B44400763962 /* Quiz_OceanApp.swift */,
-				3352945C2BB6B44400763962 /* ContentView.swift */,
 				3352945E2BB6B44600763962 /* Assets.xcassets */,
-				335294632BB6B44600763962 /* Persistence.swift */,
 				335294652BB6B44600763962 /* Quiz_Ocean.xcdatamodeld */,
 				335294602BB6B44600763962 /* Preview Content */,
+				3352948B2BB97BAD00763962 /* AppConstant.swift */,
 			);
 			path = "Quiz Ocean";
 			sourceTree = "<group>";
@@ -71,6 +112,54 @@
 				335294612BB6B44600763962 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		335294752BB93A0F00763962 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3352945C2BB6B44400763962 /* ChatSectiontView.swift */,
+				3352946F2BB6C56400763962 /* ChatView.swift */,
+				335294712BB6C59000763962 /* TabView.swift */,
+				335294732BB6C59F00763962 /* HomeSectionView.swift */,
+				335294762BB93A5300763962 /* TestFromCategoryView.swift */,
+				3352947B2BB945BB00763962 /* TestRow.swift */,
+				3352947D2BB9626400763962 /* ChatIndexView.swift */,
+				3352949A2BB9809700763962 /* UserSettingsView.swift */,
+				3352949C2BB981CA00763962 /* ChatSettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		335294782BB9404A00763962 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				335294792BB9405D00763962 /* Tests.swift */,
+				335294832BB963F100763962 /* Conversation.swift */,
+				335294852BB9651300763962 /* Chat.swift */,
+				335294892BB97AEF00763962 /* ChatSettings.swift */,
+				3352948D2BB97CD000763962 /* UserSettings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3352947F2BB9628200763962 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				335294802BB962B900763962 /* ChatStore.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		335294912BB97E2F00763962 /* OpenAI */ = {
+			isa = PBXGroup;
+			children = (
+				335294872BB9668400763962 /* OpenAIChatConversation.swift */,
+				3352948F2BB97DDB00763962 /* ChatManager.swift */,
+				335294922BB97E5B00763962 /* OpenAIChatAPI.swift */,
+				335294942BB97EA000763962 /* OpenAIMessage.swift */,
+				335294962BB97F8A00763962 /* OpenAIEndPoint.swift */,
+			);
+			path = OpenAI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,10 +232,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				335294642BB6B44600763962 /* Persistence.swift in Sources */,
+				335294972BB97F8A00763962 /* OpenAIEndPoint.swift in Sources */,
+				335294932BB97E5B00763962 /* OpenAIChatAPI.swift in Sources */,
+				3352947C2BB945BC00763962 /* TestRow.swift in Sources */,
+				335294882BB9668400763962 /* OpenAIChatConversation.swift in Sources */,
+				3352949D2BB981CA00763962 /* ChatSettingsView.swift in Sources */,
+				3352947A2BB9405D00763962 /* Tests.swift in Sources */,
+				335294952BB97EA000763962 /* OpenAIMessage.swift in Sources */,
+				335294742BB6C59F00763962 /* HomeSectionView.swift in Sources */,
+				335294772BB93A5300763962 /* TestFromCategoryView.swift in Sources */,
 				335294672BB6B44600763962 /* Quiz_Ocean.xcdatamodeld in Sources */,
-				3352945D2BB6B44400763962 /* ContentView.swift in Sources */,
+				3352945D2BB6B44400763962 /* ChatSectiontView.swift in Sources */,
+				335294812BB962B900763962 /* ChatStore.swift in Sources */,
+				335294702BB6C56400763962 /* ChatView.swift in Sources */,
+				335294862BB9651300763962 /* Chat.swift in Sources */,
+				3352947E2BB9626400763962 /* ChatIndexView.swift in Sources */,
+				335294722BB6C59000763962 /* TabView.swift in Sources */,
+				3352948E2BB97CD000763962 /* UserSettings.swift in Sources */,
+				3352949B2BB9809700763962 /* UserSettingsView.swift in Sources */,
+				335294902BB97DDB00763962 /* ChatManager.swift in Sources */,
 				3352945B2BB6B44400763962 /* Quiz_OceanApp.swift in Sources */,
+				3352948A2BB97AEF00763962 /* ChatSettings.swift in Sources */,
+				335294842BB963F100763962 /* Conversation.swift in Sources */,
+				3352948C2BB97BAD00763962 /* AppConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +390,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,6 +419,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
