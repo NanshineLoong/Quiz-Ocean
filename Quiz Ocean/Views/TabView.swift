@@ -11,7 +11,7 @@ struct TabedView: View {
 
     var body: some View {
         TabView {
-            HomeSectionView()
+            HomeSectionView(calendar: Calendar(identifier: .gregorian))
                 .tabItem {
                     Image(systemName: "house")
                 }

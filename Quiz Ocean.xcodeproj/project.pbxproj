@@ -32,6 +32,7 @@
 		335294972BB97F8A00763962 /* OpenAIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294962BB97F8A00763962 /* OpenAIEndPoint.swift */; };
 		3352949B2BB9809700763962 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352949A2BB9809700763962 /* UserSettingsView.swift */; };
 		3352949D2BB981CA00763962 /* ChatSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352949C2BB981CA00763962 /* ChatSettingsView.swift */; };
+		335294B92BC22DE300763962 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294B82BC22DE300763962 /* CalendarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		335294962BB97F8A00763962 /* OpenAIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIEndPoint.swift; sourceTree = "<group>"; };
 		3352949A2BB9809700763962 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		3352949C2BB981CA00763962 /* ChatSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSettingsView.swift; sourceTree = "<group>"; };
+		335294B82BC22DE300763962 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				3352947D2BB9626400763962 /* ChatIndexView.swift */,
 				3352949A2BB9809700763962 /* UserSettingsView.swift */,
 				3352949C2BB981CA00763962 /* ChatSettingsView.swift */,
+				335294B82BC22DE300763962 /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			files = (
 				335294972BB97F8A00763962 /* OpenAIEndPoint.swift in Sources */,
 				335294932BB97E5B00763962 /* OpenAIChatAPI.swift in Sources */,
+				335294B92BC22DE300763962 /* CalendarView.swift in Sources */,
 				3352947C2BB945BC00763962 /* TestRow.swift in Sources */,
 				335294882BB9668400763962 /* OpenAIChatConversation.swift in Sources */,
 				3352949D2BB981CA00763962 /* ChatSettingsView.swift in Sources */,
