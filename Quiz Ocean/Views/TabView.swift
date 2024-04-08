@@ -19,6 +19,10 @@ struct TabedView: View {
                 .tabItem {
                     Image(systemName: "message")
                 }
+            SwiftUIView()
+                .tabItem {
+                    Image(systemName: "globe")
+                }
         }
         .accentColor(.black)
     }

@@ -33,6 +33,7 @@
 		3352949B2BB9809700763962 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352949A2BB9809700763962 /* UserSettingsView.swift */; };
 		3352949D2BB981CA00763962 /* ChatSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352949C2BB981CA00763962 /* ChatSettingsView.swift */; };
 		335294B92BC22DE300763962 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294B82BC22DE300763962 /* CalendarView.swift */; };
+		33BA32AB2BC382FC00C88D1F /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA32AA2BC382FC00C88D1F /* SwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		3352949A2BB9809700763962 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		3352949C2BB981CA00763962 /* ChatSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSettingsView.swift; sourceTree = "<group>"; };
 		335294B82BC22DE300763962 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		33BA32AA2BC382FC00C88D1F /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				3352949A2BB9809700763962 /* UserSettingsView.swift */,
 				3352949C2BB981CA00763962 /* ChatSettingsView.swift */,
 				335294B82BC22DE300763962 /* CalendarView.swift */,
+				33BA32AA2BC382FC00C88D1F /* SwiftUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				335294722BB6C59000763962 /* TabView.swift in Sources */,
 				3352948E2BB97CD000763962 /* UserSettings.swift in Sources */,
 				3352949B2BB9809700763962 /* UserSettingsView.swift in Sources */,
+				33BA32AB2BC382FC00C88D1F /* SwiftUIView.swift in Sources */,
 				335294902BB97DDB00763962 /* ChatManager.swift in Sources */,
 				3352945B2BB6B44400763962 /* Quiz_OceanApp.swift in Sources */,
 				3352948A2BB97AEF00763962 /* ChatSettings.swift in Sources */,
