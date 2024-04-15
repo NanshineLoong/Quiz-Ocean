@@ -1,15 +1,13 @@
 //
-//  ChatView.swift
+//  ChatDetailView.swift
 //  Quiz Ocean
 //
-//  Created by Nanshine on 2024/3/29.
+//  Created by Nanshine on 2024/4/11.
 //
 
 import SwiftUI
 
-// Chat view
-
-struct ChatView: View {
+struct ChatDetailView: View {
     @EnvironmentObject var chatStore: ChatStore
     @State private var showingChatSettings = false
     @FocusState private var isFocused: Bool  // focus on a keyboard
@@ -199,9 +197,8 @@ struct ChatView: View {
     }
 }
 
-struct ChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatView(conversationID: ChatStore.sample.conversations[0].id)
-            .environmentObject(ChatStore.sample)
-    }
-}
+//struct ChatDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatDetailView()
+//    }
+//}
