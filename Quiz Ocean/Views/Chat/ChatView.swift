@@ -1,14 +1,14 @@
 //
-//  ContentView.swift
+//  ChatView.swift
 //  Quiz Ocean
 //
 //  Created by Nanshine on 2024/3/29.
 //
+
 import SwiftUI
 
-// Main content view
-
-struct ChatSectionView: View {
+// Chat view
+struct ChatView: View {
     var body: some View {
         NavigationSplitView {
             ChatIndexView()
@@ -18,9 +18,10 @@ struct ChatSectionView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+
+struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatSectionView()
+        ChatView()
             .environmentObject(ChatStore.sample)
     }
 }

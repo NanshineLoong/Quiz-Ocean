@@ -48,7 +48,7 @@ struct ChatIndexView: View {
 
                 // Chat view
 
-                ChatView(conversationID: id)
+                ChatDetailView(conversationID: id)
             }
         }
         .navigationTitle("Chats")
