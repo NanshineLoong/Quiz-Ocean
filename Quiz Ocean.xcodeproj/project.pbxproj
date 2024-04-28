@@ -36,6 +36,7 @@
 		33BA32D22BC67E8100C88D1F /* TestStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA32D12BC67E8100C88D1F /* TestStore.swift */; };
 		33BA32D42BC6C14B00C88D1F /* Test1.json in Resources */ = {isa = PBXBuildFile; fileRef = 33BA32D32BC6C14B00C88D1F /* Test1.json */; };
 		33BA32D62BC7EE8300C88D1F /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA32D52BC7EE8300C88D1F /* ChatDetailView.swift */; };
+		33BA32D82BCE5BB300C88D1F /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA32D72BCE5BB300C88D1F /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		33BA32D12BC67E8100C88D1F /* TestStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStore.swift; sourceTree = "<group>"; };
 		33BA32D32BC6C14B00C88D1F /* Test1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test1.json; sourceTree = "<group>"; };
 		33BA32D52BC7EE8300C88D1F /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
+		33BA32D72BCE5BB300C88D1F /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,11 +138,8 @@
 		335294782BB9404A00763962 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				33BA33082BDE617600C88D1F /* Chat */,
 				335294792BB9405D00763962 /* Test.swift */,
-				335294832BB963F100763962 /* Conversation.swift */,
-				335294852BB9651300763962 /* Chat.swift */,
-				335294892BB97AEF00763962 /* ChatSettings.swift */,
-				3352948D2BB97CD000763962 /* UserSettings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,6 +184,7 @@
 				335294B82BC22DE300763962 /* CalendarView.swift */,
 				3352947B2BB945BB00763962 /* TestBoard.swift */,
 				335294762BB93A5300763962 /* TestsFromSubjectView.swift */,
+				33BA32D72BCE5BB300C88D1F /* TestView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -196,6 +196,17 @@
 				33BA32D32BC6C14B00C88D1F /* Test1.json */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		33BA33082BDE617600C88D1F /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				335294832BB963F100763962 /* Conversation.swift */,
+				335294852BB9651300763962 /* Chat.swift */,
+				335294892BB97AEF00763962 /* ChatSettings.swift */,
+				3352948D2BB97CD000763962 /* UserSettings.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +305,7 @@
 				3352945B2BB6B44400763962 /* Quiz_OceanApp.swift in Sources */,
 				3352948A2BB97AEF00763962 /* ChatSettings.swift in Sources */,
 				335294842BB963F100763962 /* Conversation.swift in Sources */,
+				33BA32D82BCE5BB300C88D1F /* TestView.swift in Sources */,
 				3352948C2BB97BAD00763962 /* AppConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

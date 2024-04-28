@@ -1,49 +1,48 @@
 {
-    "id": "2",
-    "level": "Middle",
+    "level": "Middle School",
     "subject": "Number Sense",
     "year": "2024",
     "paperIndex": "#12",
     "questions": [
         {
-            "content": "1+1=",
-            "answer": "2"
+            "content": "11+11=",
+            "answer": "22"
         },
         {
-            "content": "2+2=",
-            "answer": "4"
+            "content": "22+22=",
+            "answer": "44"
         },
         {
-            "content": "3+3=",
-            "answer": "6"
+            "content": "33+33=",
+            "answer": "66"
         },
         {
-            "content": "4+4=",
-            "answer": "8"
+            "content": "44+44=",
+            "answer": "89"
         },
         {
-            "content": "5+5=",
-            "answer": "10"
+            "content": "55+55=",
+            "answer": "110"
         },
         {
-            "content": "6+6=",
-            "answer": "12"
+            "content": "66+66=",
+            "answer": "132"
         },
         {
-            "content": "7+7=",
-            "answer": "14"
+            "content": "77+77=",
+            "answer": "154"
         },
         {
-            "content": "8+8=",
-            "answer": "16"
+            "content": "88+88=",
+            "answer": "176"
         },
         {
-            "content": "9+9=",
-            "answer": "18"
+            "content": "99+99=",
+            "answer": "198"
         },
         {
-            "content": "10+10=",
-            "answer": "20"
+            "content": "100+100=",
+            "answer": "200"
         }
     ]
   }

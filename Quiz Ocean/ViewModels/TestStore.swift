@@ -12,18 +12,18 @@ import SwiftUI
 final class TestStore: ObservableObject {
     var tests = [Test]()
     @Published var userTests = [UserTest]()
-    let userId: UUID
+    let userid: UUID
     
     #if DEBUG
     static let sample: TestStore = {
-        let testStore = TestStore(userId: UUID())
+        let testStore = TestStore(userid: UUID())
         testStore.tests = [Test.sample]
         return testStore
     }()
     #endif
     
-    init(userId: UUID) {
-        self.userId = userId
+    init(userid: UUID) {
+        self.userid = userid
     }
     
     // set up the Test Store data
@@ -44,7 +44,7 @@ final class TestStore: ObservableObject {
         }
         
         // UserTests
-        if let loadedUserTests = loadUserTests(userId: self.userId) {
+        if let loadedUserTests = loadUserTests(userId: self.userid) {
             userTests = loadedUserTests
         } else {
             // Have printed the error message
@@ -57,7 +57,7 @@ final class TestStore: ObservableObject {
     func save() {
         guard !userTests.isEmpty else { return }
         do {
-            let url = getDocumentsDirectory().appendingPathComponent("userTests_\(userId).json")
+            let url = getDocumentsDirectory().appendingPathComponent("userTests_\(userid).json")
             let data = try JSONEncoder().encode(userTests)
             try data.write(to: url)
         } catch {
@@ -75,6 +75,7 @@ final class TestStore: ObservableObject {
             let data = try Data(contentsOf: url)
             let decoder = JSONDecoder()
             let test = try decoder.decode(Test.self, from: data)
+            print("Successfully load \(filename).json in Bundle.")
             return test
         } catch {
             print("Failed to decode \(filename).json from Bundle.")
@@ -96,7 +97,7 @@ final class TestStore: ObservableObject {
     }
     
     func saveUserTest(userId: UUID, userTest: UserTest) {
-        if let index = userTests.firstIndex(where: {$0.testId == userTest.testId}) {
+        if let index = userTests.firstIndex(where: {$0.testid == userTest.testid}) {
             userTests[index] = userTest
         } else {
             userTests.append(userTest)
@@ -116,12 +117,39 @@ final class TestStore: ObservableObject {
         return paths[0]
     }
     
+    func findUserTestFromTest(from test: Test) -> UserTest? {
+        userTests.first { $0.testid == test.id }
+    }
+    
     func filterTestsFromSubject(from subject: Subject) -> [Test] {
         tests.filter {$0.subject == subject}
     }
     
-    func findUserTestFromTest(from test: Test) -> UserTest? {
-        userTests.first { $0.testId == test.id }
+    func filterStaredTests() -> [Test] {
+        tests.filter {findUserTestFromTest(from: $0)?.stared ?? false}
+    }
+    
+    func filterFinishedTests() -> [Test] {
+        tests.filter {(findUserTestFromTest(from: $0)?.score != nil)}
+    }
+    
+    func filterScheduledTests() -> [Test] {
+        tests.filter { test in
+            guard let usertest = findUserTestFromTest(from: test) else {
+                return false
+            }
+            // reture unfinished but scheduled test
+            return usertest.score == nil && usertest.scheduledDate != nil
+        }
+    }
+    
+    func filterScheduledTests(on date: Date, for calendar: Calendar) -> [Test] {
+        tests.filter { test in
+            guard let usertest = findUserTestFromTest(from: test), let scheduledDate = usertest.scheduledDate else {
+                return false
+            }
+            return calendar.isDate(date, inSameDayAs: scheduledDate)
+        }
     }
     
     func bindingForUserTest(from test: Test) -> Binding<UserTest?> {
@@ -129,7 +157,7 @@ final class TestStore: ObservableObject {
             get: { self.findUserTestFromTest(from: test)},
             set: {newValue in
                 if let newValue = newValue {
-                    self.saveUserTest(userId: self.userId, userTest: newValue)
+                    self.saveUserTest(userId: self.userid, userTest: newValue)
                 }
             }
         )
