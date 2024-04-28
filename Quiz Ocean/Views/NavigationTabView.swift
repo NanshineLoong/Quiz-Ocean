@@ -11,7 +11,7 @@ struct NavigationTabView: View {
 
     var body: some View {
         TabView {
-            HomeView(calendar: Calendar(identifier: .gregorian))
+            HomeView()
                 .tabItem {
                     Image("home")
                 }

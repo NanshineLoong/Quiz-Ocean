@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct Quiz_OceanApp: App {
     @StateObject private var chatStore = ChatStore()
-    @StateObject private var testStore = TestStore(userId: UUID())
+    @StateObject private var testStore = TestStore(userid: UUID())
     @Environment(\.scenePhase) var scenePhase
 
     var body: some Scene {
