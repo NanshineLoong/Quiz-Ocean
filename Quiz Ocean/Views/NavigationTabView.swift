@@ -8,19 +8,32 @@
 import SwiftUI
 
 struct NavigationTabView: View {
+    @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Image("home")
+        VStack {
+            VStack(spacing: 16) {
+                if authManager.authState != .signedOut {
+                    TabView {
+                        HomeView()
+                            .tabItem {
+                                Image("home")
+                            }
+                        ChatView()
+                            .tabItem {
+                                Image("chat")
+                            }
+                        ProfileView()
+                            .tabItem{
+                                Image("profile")
+                            }
+                    }
+                    .accentColor(.black)
+                } else {
+                    LoginView()
                 }
-            ChatView()
-                .tabItem {
-                    Image("chat")
-                }
+            }
         }
-        .accentColor(.black)
     }
 }
 
