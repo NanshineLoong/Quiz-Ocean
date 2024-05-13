@@ -37,6 +37,17 @@
 		33BA32D42BC6C14B00C88D1F /* Test1.json in Resources */ = {isa = PBXBuildFile; fileRef = 33BA32D32BC6C14B00C88D1F /* Test1.json */; };
 		33BA32D62BC7EE8300C88D1F /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA32D52BC7EE8300C88D1F /* ChatDetailView.swift */; };
 		33BA32D82BCE5BB300C88D1F /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA32D72BCE5BB300C88D1F /* TestView.swift */; };
+		33BA33212BF100C100C88D1F /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA33202BF100C100C88D1F /* AuthManager.swift */; };
+		33BA33262BF1750100C88D1F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 33BA33252BF1750100C88D1F /* FirebaseAuth */; };
+		33BA33292BF176ED00C88D1F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 33BA33282BF176ED00C88D1F /* GoogleSignIn */; };
+		33BA332B2BF176ED00C88D1F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 33BA332A2BF176ED00C88D1F /* GoogleSignInSwift */; };
+		33BA332D2BF1784F00C88D1F /* AuthManager-DeleteAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA332C2BF1784F00C88D1F /* AuthManager-DeleteAccount.swift */; };
+		33BA332F2BF1788200C88D1F /* GoogleSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA332E2BF1788200C88D1F /* GoogleSignInManager.swift */; };
+		33BA33312BF178B800C88D1F /* AppleSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA33302BF178B800C88D1F /* AppleSignInManager.swift */; };
+		33BA33332BF17A8200C88D1F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA33322BF17A8200C88D1F /* ProfileView.swift */; };
+		33BA33352BF17ADE00C88D1F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA33342BF17ADE00C88D1F /* LoginView.swift */; };
+		33BA33372BF17B2C00C88D1F /* ContentLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA33362BF17B2C00C88D1F /* ContentLoginView.swift */; };
+		33BA33392BF17EBA00C88D1F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33BA33382BF17EBA00C88D1F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +82,16 @@
 		33BA32D32BC6C14B00C88D1F /* Test1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test1.json; sourceTree = "<group>"; };
 		33BA32D52BC7EE8300C88D1F /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
 		33BA32D72BCE5BB300C88D1F /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		33BA33202BF100C100C88D1F /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		33BA332C2BF1784F00C88D1F /* AuthManager-DeleteAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthManager-DeleteAccount.swift"; sourceTree = "<group>"; };
+		33BA332E2BF1788200C88D1F /* GoogleSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInManager.swift; sourceTree = "<group>"; };
+		33BA33302BF178B800C88D1F /* AppleSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInManager.swift; sourceTree = "<group>"; };
+		33BA33322BF17A8200C88D1F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		33BA33342BF17ADE00C88D1F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		33BA33362BF17B2C00C88D1F /* ContentLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLoginView.swift; sourceTree = "<group>"; };
+		33BA33382BF17EBA00C88D1F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		33BA333A2BF17F3200C88D1F /* Quiz-Ocean-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Quiz-Ocean-Info.plist"; sourceTree = SOURCE_ROOT; };
+		33BA333B2BF18F2400C88D1F /* Quiz Ocean.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Quiz Ocean.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +99,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33BA332B2BF176ED00C88D1F /* GoogleSignInSwift in Frameworks */,
+				33BA33262BF1750100C88D1F /* FirebaseAuth in Frameworks */,
+				33BA33292BF176ED00C88D1F /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +127,8 @@
 		335294592BB6B44400763962 /* Quiz Ocean */ = {
 			isa = PBXGroup;
 			children = (
+				33BA333B2BF18F2400C88D1F /* Quiz Ocean.entitlements */,
+				33BA333A2BF17F3200C88D1F /* Quiz-Ocean-Info.plist */,
 				33BA32CE2BC67D4600C88D1F /* Data */,
 				335294912BB97E2F00763962 /* OpenAI */,
 				3352947F2BB9628200763962 /* ViewModels */,
@@ -113,6 +139,7 @@
 				335294652BB6B44600763962 /* Quiz_Ocean.xcdatamodeld */,
 				335294602BB6B44600763962 /* Preview Content */,
 				3352948B2BB97BAD00763962 /* AppConstant.swift */,
+				33BA33382BF17EBA00C88D1F /* GoogleService-Info.plist */,
 			);
 			path = "Quiz Ocean";
 			sourceTree = "<group>";
@@ -131,6 +158,9 @@
 				33BA32CC2BC62B7E00C88D1F /* Home */,
 				33BA32CB2BC62B5900C88D1F /* Chat */,
 				335294712BB6C59000763962 /* NavigationTabView.swift */,
+				33BA33322BF17A8200C88D1F /* ProfileView.swift */,
+				33BA33342BF17ADE00C88D1F /* LoginView.swift */,
+				33BA33362BF17B2C00C88D1F /* ContentLoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -140,6 +170,10 @@
 			children = (
 				33BA33082BDE617600C88D1F /* Chat */,
 				335294792BB9405D00763962 /* Test.swift */,
+				33BA33202BF100C100C88D1F /* AuthManager.swift */,
+				33BA332C2BF1784F00C88D1F /* AuthManager-DeleteAccount.swift */,
+				33BA332E2BF1788200C88D1F /* GoogleSignInManager.swift */,
+				33BA33302BF178B800C88D1F /* AppleSignInManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,6 +259,11 @@
 			dependencies = (
 			);
 			name = "Quiz Ocean";
+			packageProductDependencies = (
+				33BA33252BF1750100C88D1F /* FirebaseAuth */,
+				33BA33282BF176ED00C88D1F /* GoogleSignIn */,
+				33BA332A2BF176ED00C88D1F /* GoogleSignInSwift */,
+			);
 			productName = "Quiz Ocean";
 			productReference = 335294572BB6B44400763962 /* Quiz Ocean.app */;
 			productType = "com.apple.product-type.application";
@@ -253,6 +292,10 @@
 				Base,
 			);
 			mainGroup = 3352944E2BB6B44400763962;
+			packageReferences = (
+				33BA33242BF1750100C88D1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				33BA33272BF176ED00C88D1F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			productRefGroup = 335294582BB6B44400763962 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -271,6 +314,7 @@
 				335294622BB6B44600763962 /* Preview Assets.xcassets in Resources */,
 				3352945F2BB6B44600763962 /* Assets.xcassets in Resources */,
 				33BA32D42BC6C14B00C88D1F /* Test1.json in Resources */,
+				33BA33392BF17EBA00C88D1F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,14 +325,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33BA33332BF17A8200C88D1F /* ProfileView.swift in Sources */,
 				335294972BB97F8A00763962 /* OpenAIEndPoint.swift in Sources */,
 				335294932BB97E5B00763962 /* OpenAIChatAPI.swift in Sources */,
 				335294B92BC22DE300763962 /* CalendarView.swift in Sources */,
 				3352947C2BB945BC00763962 /* TestBoard.swift in Sources */,
+				33BA33312BF178B800C88D1F /* AppleSignInManager.swift in Sources */,
 				335294882BB9668400763962 /* OpenAIChatConversation.swift in Sources */,
 				3352949D2BB981CA00763962 /* ChatSettingsView.swift in Sources */,
 				3352947A2BB9405D00763962 /* Test.swift in Sources */,
 				33BA32D22BC67E8100C88D1F /* TestStore.swift in Sources */,
+				33BA332F2BF1788200C88D1F /* GoogleSignInManager.swift in Sources */,
 				335294952BB97EA000763962 /* OpenAIMessage.swift in Sources */,
 				33BA32D62BC7EE8300C88D1F /* ChatDetailView.swift in Sources */,
 				335294742BB6C59F00763962 /* HomeView.swift in Sources */,
@@ -297,15 +344,19 @@
 				335294812BB962B900763962 /* ChatStore.swift in Sources */,
 				335294702BB6C56400763962 /* ChatView.swift in Sources */,
 				335294862BB9651300763962 /* Chat.swift in Sources */,
+				33BA33212BF100C100C88D1F /* AuthManager.swift in Sources */,
 				3352947E2BB9626400763962 /* ChatIndexView.swift in Sources */,
+				33BA33372BF17B2C00C88D1F /* ContentLoginView.swift in Sources */,
 				335294722BB6C59000763962 /* NavigationTabView.swift in Sources */,
 				3352948E2BB97CD000763962 /* UserSettings.swift in Sources */,
 				3352949B2BB9809700763962 /* UserSettingsView.swift in Sources */,
 				335294902BB97DDB00763962 /* ChatManager.swift in Sources */,
 				3352945B2BB6B44400763962 /* Quiz_OceanApp.swift in Sources */,
 				3352948A2BB97AEF00763962 /* ChatSettings.swift in Sources */,
+				33BA332D2BF1784F00C88D1F /* AuthManager-DeleteAccount.swift in Sources */,
 				335294842BB963F100763962 /* Conversation.swift in Sources */,
 				33BA32D82BCE5BB300C88D1F /* TestView.swift in Sources */,
+				33BA33352BF17ADE00C88D1F /* LoginView.swift in Sources */,
 				3352948C2BB97BAD00763962 /* AppConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,11 +483,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Quiz Ocean/Quiz Ocean.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Quiz Ocean/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Quiz-Ocean-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -461,11 +514,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Quiz Ocean/Quiz Ocean.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Quiz Ocean/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Quiz-Ocean-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -507,6 +562,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		33BA33242BF1750100C88D1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+		33BA33272BF176ED00C88D1F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		33BA33252BF1750100C88D1F /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33BA33242BF1750100C88D1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		33BA33282BF176ED00C88D1F /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33BA33272BF176ED00C88D1F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		33BA332A2BF176ED00C88D1F /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33BA33272BF176ED00C88D1F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		335294652BB6B44600763962 /* Quiz_Ocean.xcdatamodeld */ = {
