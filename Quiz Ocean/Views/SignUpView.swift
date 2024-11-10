@@ -1,22 +1,20 @@
 //
-//  LoginView.swift
+//  SignUpView.swift
 //  Quiz Ocean
 //
-//  Created by Nanshine on 2024/5/13.
+//  Created by Nanshine on 2024/10/29.
 //
 
-import AuthenticationServices
-import GoogleSignInSwift
 import SwiftUI
 
-struct LoginView: View {
-    @StateObject var user = UserViewModel()
-    @State private var signUpViewPresented = false
+struct SignUpView: View {
+    @ObservedObject var user: UserViewModel
+    @Binding var isPresented: Bool
     
     var body: some View {
-        let loginView = VStack {
-            // Login title
-            Text("Login".uppercased())
+        let signUpView = VStack {
+            // Sign up title
+            Text("Sign up".uppercased())
                 .font(.title)
             
             Spacer()
@@ -25,7 +23,7 @@ struct LoginView: View {
             
             // Email textfield
             let emailInputField = HStack {
-                Image(systemName: "person")
+                Image("user-icon")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30.0, height: 30.0)
@@ -51,7 +49,7 @@ struct LoginView: View {
             
             // Password textfield
             let passwordInputField = HStack {
-                Image(systemName: "lock.fill")
+                Image("lock-icon")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30.0, height: 30.0)
@@ -72,9 +70,9 @@ struct LoginView: View {
                 .frame(idealHeight: 0.05 * ScreenDimensions.height)
                 .fixedSize()
             
-            // Login button
-            let loginButton = Button(action: user.login) {
-                Text("Login".uppercased())
+            // Sign up button
+            let signUpButton = Button(action: user.signUp) {
+                Text("Sign up".uppercased())
                     .foregroundColor(.white)
                     .font(.title2)
                     .bold()
@@ -83,10 +81,10 @@ struct LoginView: View {
                 .background(Capsule().fill(Color(.systemTeal)))
             
 #if os(iOS) || os(macOS)
-            loginButton
+            signUpButton
                 .buttonStyle(BorderlessButtonStyle())
 #elseif os(tvOS)
-            loginButton
+            signUpButton
 #endif
             
             Spacer()
@@ -95,21 +93,19 @@ struct LoginView: View {
             
             // Navigation text
             HStack {
-                Text("Don't have an account?")
-                let signUpButton = Button(action: {
-                    signUpViewPresented = true
+                Text("Already have an account?")
+                let loginButton = Button(action: {
+                    isPresented = false
                 }) {
-                    Text("Sign up".uppercased())
+                    Text("Login".uppercased())
                         .bold()
                 }
-                    .sheet(isPresented: $signUpViewPresented) {
-                        SignUpView(user: user, isPresented: $signUpViewPresented)
-                    }
+                
 #if os(iOS) || os(macOS)
-                signUpButton
+                loginButton
                     .buttonStyle(BorderlessButtonStyle())
 #elseif os(tvOS)
-                signUpButton
+                loginButton
 #endif
             }
         }
@@ -117,20 +113,15 @@ struct LoginView: View {
                 Alert(
                     title: Text("Message"),
                     message: Text(user.alertMessage),
-                    dismissButton: .destructive(Text("OK"))
+                    dismissButton: .destructive(Text("Ok"))
                 )
             })
 #if os(iOS) || os(tvOS)
-        loginView
+        signUpView
 #elseif os(macOS)
-        loginView
+        signUpView
             .frame(minWidth: 400, idealWidth: 400, minHeight: 700, idealHeight: 700)
 #endif
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}

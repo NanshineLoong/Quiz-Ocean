@@ -1,0 +1,48 @@
+{
+    "level": "Middle School",
+    "subject": "Number Sense",
+    "year": "2024",
+    "paperIndex": "#25",
+    "questions": [
+        {
+            "content": "What is 60% of 150?",
+            "answer": "90"
+        },
+        {
+            "content": "What is the sum of 32 and 58?",
+            "answer": "90"
+        },
+        {
+            "content": "If a rectangle has a length of 8 cm and a width of 3 cm, what is its area?",
+            "answer": "24"
+        },
+        {
+            "content": "What is the product of 6 and 9?",
+            "answer": "54"
+        },
+        {
+            "content": "Calculate the value of 10 - 4 + 3.",
+            "answer": "9"
+        },
+        {
+            "content": "What is the greatest common factor (GCF) of 18 and 24?",
+            "answer": "6"
+        },
+        {
+            "content": "If you have $75 and you spend $20, how much do you have left?",
+            "answer": "55"
+        },
+        {
+            "content": "What is the median of the set {4, 8, 15, 16, 23}?",
+            "answer": "15"
+        },
+        {
+            "content": "If you multiply 11 by 5, what is the result?",
+            "answer": "55"
+        },
+        {
+            "content": "What is the value of 3³?",
+            "answer": "27"
+        }
+    ]
+}

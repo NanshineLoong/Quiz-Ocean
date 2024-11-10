@@ -1,0 +1,48 @@
+{
+    "level": "High School",
+    "subject": "General Mathematics",
+    "year": "2024",
+    "paperIndex": "#15",
+    "questions": [
+        {
+            "content": "Solve for x: 3x - 7 = 11",
+            "answer": "6"
+        },
+        {
+            "content": "If f(x) = 2x² - 3x + 5, find f(3).",
+            "answer": "14"
+        },
+        {
+            "content": "What is the solution to the inequality 2x - 5 > 3?",
+            "answer": "4"
+        },
+        {
+            "content": "Simplify the expression: (3x + 4)(2x - 1) at x = 1.",
+            "answer": "7"
+        },
+        {
+            "content": "What is the length of the hypotenuse in a right triangle with legs of length 6 cm and 8 cm?",
+            "answer": "10"
+        },
+        {
+            "content": "Find the derivative of f(x) = 5x³ - 2x² + x at x = 1.",
+            "answer": "12"
+        },
+        {
+            "content": "Calculate the compound interest on $1000 at a rate of 5% per year, compounded annually for 3 years.",
+            "answer": "1157.63"
+        },
+        {
+            "content": "Solve the quadratic equation: x² - 6x + 8 = 0, giving the smallest root.",
+            "answer": "2"
+        },
+        {
+            "content": "If sin θ = 0.6, find cos θ for an angle in the first quadrant, rounded to two decimal places.",
+            "answer": "0.8"
+        },
+        {
+            "content": "What is the area of a sector of a circle with radius 10 cm and a central angle of 30°? (Use π ≈ 3.14, round to two decimal places)",
+            "answer": "26.18"
+        }
+    ]
+}

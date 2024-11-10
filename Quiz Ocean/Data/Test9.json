@@ -1,0 +1,48 @@
+{
+    "level": "Middle School",
+    "subject": "General Science",
+    "year": "2024",
+    "paperIndex": "#20",
+    "questions": [
+        {
+            "content": "What is the chemical symbol for water?",
+            "answer": "H2O"
+        },
+        {
+            "content": "What planet is known as the Red Planet?",
+            "answer": "Mars"
+        },
+        {
+            "content": "What is the process by which plants make their own food?",
+            "answer": "Photosynthesis"
+        },
+        {
+            "content": "What gas do living creatures need to breathe?",
+            "answer": "Oxygen"
+        },
+        {
+            "content": "What part of the cell contains the genetic material?",
+            "answer": "Nucleus"
+        },
+        {
+            "content": "What is the boiling point of water in degrees Celsius?",
+            "answer": "100"
+        },
+        {
+            "content": "What force keeps us on the ground?",
+            "answer": "Gravity"
+        },
+        {
+            "content": "What is the largest organ in the human body?",
+            "answer": "Skin"
+        },
+        {
+            "content": "What is the main source of energy for the Earth?",
+            "answer": "The Sun"
+        },
+        {
+            "content": "What are the three states of matter?",
+            "answer": "Solid, Liquid, Gas"
+        }
+    ]
+}

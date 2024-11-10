@@ -1,0 +1,48 @@
+{
+    "level": "Middle School",
+    "subject": "Calculator Applications",
+    "year": "2024",
+    "paperIndex": "#18",
+    "questions": [
+        {
+            "content": "Calculate the sum of 234.56 + 789.44.",
+            "answer": "1024"
+        },
+        {
+            "content": "Find the product of 12.5 × 8.",
+            "answer": "100"
+        },
+        {
+            "content": "What is 625 ÷ 25?",
+            "answer": "25"
+        },
+        {
+            "content": "If you earn $500 and spend $175.25, how much money do you have left?",
+            "answer": "324.75"
+        },
+        {
+            "content": "Calculate the difference: 99.5 - 43.2.",
+            "answer": "56.3"
+        },
+        {
+            "content": "What is the value of 7³?",
+            "answer": "343"
+        },
+        {
+            "content": "Evaluate the expression: (10 - 4) × 6 + 2.",
+            "answer": "37"
+        },
+        {
+            "content": "What is the average of the numbers 15, 25, 35, and 45?",
+            "answer": "30"
+        },
+        {
+            "content": "Find the square root of 256.",
+            "answer": "16"
+        },
+        {
+            "content": "What is 20% of 300?",
+            "answer": "60"
+        }
+    ]
+}

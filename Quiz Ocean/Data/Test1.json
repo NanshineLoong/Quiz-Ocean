@@ -2,47 +2,47 @@
     "level": "Middle School",
     "subject": "Number Sense",
     "year": "2024",
-    "paperIndex": "#12",
+    "paperIndex": "#24",
     "questions": [
         {
-            "content": "11+11=",
-            "answer": "22"
+            "content": "What is 25% of 80?",
+            "answer": "20"
         },
         {
-            "content": "22+22=",
-            "answer": "44"
+            "content": "What is the sum of 45 and 67?",
+            "answer": "112"
         },
         {
-            "content": "33+33=",
-            "answer": "66"
+            "content": "If a triangle has angles measuring 60° and 30°, what is the measure of the third angle?",
+            "answer": "90"
         },
         {
-            "content": "44+44=",
-            "answer": "89"
+            "content": "What is the product of 9 and 7?",
+            "answer": "63"
         },
         {
-            "content": "55+55=",
-            "answer": "110"
+            "content": "Calculate the value of 5².",
+            "answer": "25"
         },
         {
-            "content": "66+66=",
-            "answer": "132"
+            "content": "If you divide 144 by 12, what is the result?",
+            "answer": "12"
         },
         {
-            "content": "77+77=",
-            "answer": "154"
+            "content": "What is the perimeter of a rectangle with a length of 10 cm and a width of 4 cm?",
+            "answer": "28"
         },
         {
-            "content": "88+88=",
-            "answer": "176"
+            "content": "What is the difference between 150 and 68?",
+            "answer": "82"
         },
         {
-            "content": "99+99=",
-            "answer": "198"
+            "content": "If you have a pizza cut into 8 slices and you eat 3, how many slices are left?",
+            "answer": "5"
         },
         {
-            "content": "100+100=",
-            "answer": "200"
+            "content": "What is the average of the numbers 12, 14, and 16?",
+            "answer": "14"
         }
     ]
-  }
+}

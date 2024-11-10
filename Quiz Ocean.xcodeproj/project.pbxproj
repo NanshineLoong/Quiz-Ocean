@@ -7,15 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		332AF7812CCDC216008EC1BC /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332AF7802CCDC20D008EC1BC /* AppStyle.swift */; };
+		332AF7832CD0B063008EC1BC /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 332AF7822CD0B063008EC1BC /* FirebaseDatabase */; };
+		332AF7852CD0B063008EC1BC /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 332AF7842CD0B063008EC1BC /* FirebaseDatabaseSwift */; };
+		332AF7872CD0DFE4008EC1BC /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332AF7862CD0DFDE008EC1BC /* UserViewModel.swift */; };
+		332AF7892CD0E04B008EC1BC /* ScreenDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332AF7882CD0E045008EC1BC /* ScreenDimensions.swift */; };
+		332AF78B2CD0E072008EC1BC /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332AF78A2CD0E06E008EC1BC /* SignUpView.swift */; };
+		333273BA2CE0341600796CA9 /* SignInDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333273B92CE0341600796CA9 /* SignInDaysView.swift */; };
+		333273BC2CE0348C00796CA9 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333273BB2CE0348C00796CA9 /* ShopView.swift */; };
+		333273BE2CE034B600796CA9 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333273BD2CE034B600796CA9 /* HealthView.swift */; };
+		333273C02CE034E000796CA9 /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333273BF2CE034E000796CA9 /* LevelView.swift */; };
 		3352945B2BB6B44400763962 /* Quiz_OceanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352945A2BB6B44400763962 /* Quiz_OceanApp.swift */; };
 		3352945F2BB6B44600763962 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3352945E2BB6B44600763962 /* Assets.xcassets */; };
 		335294622BB6B44600763962 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335294612BB6B44600763962 /* Preview Assets.xcassets */; };
 		335294672BB6B44600763962 /* Quiz_Ocean.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 335294652BB6B44600763962 /* Quiz_Ocean.xcdatamodeld */; };
 		335294702BB6C56400763962 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352946F2BB6C56400763962 /* ChatView.swift */; };
-		335294722BB6C59000763962 /* NavigationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294712BB6C59000763962 /* NavigationTabView.swift */; };
+		335294722BB6C59000763962 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294712BB6C59000763962 /* ContentView.swift */; };
 		335294742BB6C59F00763962 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294732BB6C59F00763962 /* HomeView.swift */; };
 		335294772BB93A5300763962 /* TestsFromSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294762BB93A5300763962 /* TestsFromSubjectView.swift */; };
-		3352947A2BB9405D00763962 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294792BB9405D00763962 /* Test.swift */; };
+		3352947A2BB9405D00763962 /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294792BB9405D00763962 /* TestViewModel.swift */; };
 		3352947C2BB945BC00763962 /* TestBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352947B2BB945BB00763962 /* TestBoard.swift */; };
 		3352947E2BB9626400763962 /* ChatIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352947D2BB9626400763962 /* ChatIndexView.swift */; };
 		335294812BB962B900763962 /* ChatStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294802BB962B900763962 /* ChatStore.swift */; };
@@ -31,36 +41,54 @@
 		335294972BB97F8A00763962 /* OpenAIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294962BB97F8A00763962 /* OpenAIEndPoint.swift */; };
 		3352949B2BB9809700763962 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352949A2BB9809700763962 /* UserSettingsView.swift */; };
 		3352949D2BB981CA00763962 /* ChatSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3352949C2BB981CA00763962 /* ChatSettingsView.swift */; };
-		335294B92BC22DE300763962 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335294B82BC22DE300763962 /* CalendarView.swift */; };
+		337432582CD359BF00797DFE /* UserAttributeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337432572CD359BF00797DFE /* UserAttributeViewModel.swift */; };
+		3374325A2CD35BEE00797DFE /* Database+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337432592CD35BE500797DFE /* Database+Extensions.swift */; };
+		3374325C2CD4663600797DFE /* Test2.json in Resources */ = {isa = PBXBuildFile; fileRef = 3374325B2CD4663600797DFE /* Test2.json */; };
+		337432602CD466F000797DFE /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3374325F2CD466ED00797DFE /* Question.swift */; };
+		337432622CD4673800797DFE /* UserAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337432612CD4673000797DFE /* UserAnswer.swift */; };
+		337432642CD4675D00797DFE /* UserTestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337432632CD4675A00797DFE /* UserTestViewModel.swift */; };
+		3374326E2CD4805400797DFE /* Test9.json in Resources */ = {isa = PBXBuildFile; fileRef = 3374326B2CD4805400797DFE /* Test9.json */; };
+		3374326F2CD4805400797DFE /* Test5.json in Resources */ = {isa = PBXBuildFile; fileRef = 337432672CD4805400797DFE /* Test5.json */; };
+		337432702CD4805400797DFE /* Test7.json in Resources */ = {isa = PBXBuildFile; fileRef = 337432692CD4805400797DFE /* Test7.json */; };
+		337432712CD4805400797DFE /* Test8.json in Resources */ = {isa = PBXBuildFile; fileRef = 3374326A2CD4805400797DFE /* Test8.json */; };
+		337432722CD4805400797DFE /* Test10.json in Resources */ = {isa = PBXBuildFile; fileRef = 3374326C2CD4805400797DFE /* Test10.json */; };
+		337432732CD4805400797DFE /* Test11.json in Resources */ = {isa = PBXBuildFile; fileRef = 3374326D2CD4805400797DFE /* Test11.json */; };
+		337432742CD4805400797DFE /* Test4.json in Resources */ = {isa = PBXBuildFile; fileRef = 337432662CD4805400797DFE /* Test4.json */; };
+		337432752CD4805400797DFE /* Test3.json in Resources */ = {isa = PBXBuildFile; fileRef = 337432652CD4805400797DFE /* Test3.json */; };
+		337432762CD4805400797DFE /* Test6.json in Resources */ = {isa = PBXBuildFile; fileRef = 337432682CD4805400797DFE /* Test6.json */; };
+		3374327E2CDDAD9600797DFE /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3374327C2CDDAD9600797DFE /* CalendarView.swift */; };
 		33BA32D02BC67D4600C88D1F /* Test0.json in Resources */ = {isa = PBXBuildFile; fileRef = 33BA32CF2BC67D4600C88D1F /* Test0.json */; };
 		33BA32D22BC67E8100C88D1F /* TestStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA32D12BC67E8100C88D1F /* TestStore.swift */; };
 		33BA32D42BC6C14B00C88D1F /* Test1.json in Resources */ = {isa = PBXBuildFile; fileRef = 33BA32D32BC6C14B00C88D1F /* Test1.json */; };
 		33BA32D62BC7EE8300C88D1F /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA32D52BC7EE8300C88D1F /* ChatDetailView.swift */; };
-		33BA32D82BCE5BB300C88D1F /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA32D72BCE5BB300C88D1F /* TestView.swift */; };
-		33BA33212BF100C100C88D1F /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA33202BF100C100C88D1F /* AuthManager.swift */; };
+		33BA32D82BCE5BB300C88D1F /* FullTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA32D72BCE5BB300C88D1F /* FullTestView.swift */; };
 		33BA33262BF1750100C88D1F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 33BA33252BF1750100C88D1F /* FirebaseAuth */; };
 		33BA33292BF176ED00C88D1F /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 33BA33282BF176ED00C88D1F /* GoogleSignIn */; };
 		33BA332B2BF176ED00C88D1F /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 33BA332A2BF176ED00C88D1F /* GoogleSignInSwift */; };
-		33BA332D2BF1784F00C88D1F /* AuthManager-DeleteAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA332C2BF1784F00C88D1F /* AuthManager-DeleteAccount.swift */; };
-		33BA332F2BF1788200C88D1F /* GoogleSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA332E2BF1788200C88D1F /* GoogleSignInManager.swift */; };
-		33BA33312BF178B800C88D1F /* AppleSignInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA33302BF178B800C88D1F /* AppleSignInManager.swift */; };
 		33BA33332BF17A8200C88D1F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA33322BF17A8200C88D1F /* ProfileView.swift */; };
 		33BA33352BF17ADE00C88D1F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA33342BF17ADE00C88D1F /* LoginView.swift */; };
-		33BA33372BF17B2C00C88D1F /* ContentLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA33362BF17B2C00C88D1F /* ContentLoginView.swift */; };
 		33BA33392BF17EBA00C88D1F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33BA33382BF17EBA00C88D1F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		332AF7802CCDC20D008EC1BC /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
+		332AF7862CD0DFDE008EC1BC /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		332AF7882CD0E045008EC1BC /* ScreenDimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDimensions.swift; sourceTree = "<group>"; };
+		332AF78A2CD0E06E008EC1BC /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		333273B92CE0341600796CA9 /* SignInDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDaysView.swift; sourceTree = "<group>"; };
+		333273BB2CE0348C00796CA9 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+		333273BD2CE034B600796CA9 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
+		333273BF2CE034E000796CA9 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
 		335294572BB6B44400763962 /* Quiz Ocean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz Ocean.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3352945A2BB6B44400763962 /* Quiz_OceanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_OceanApp.swift; sourceTree = "<group>"; };
 		3352945E2BB6B44600763962 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		335294612BB6B44600763962 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		335294662BB6B44600763962 /* Quiz_Ocean.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quiz_Ocean.xcdatamodel; sourceTree = "<group>"; };
 		3352946F2BB6C56400763962 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		335294712BB6C59000763962 /* NavigationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabView.swift; sourceTree = "<group>"; };
+		335294712BB6C59000763962 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		335294732BB6C59F00763962 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		335294762BB93A5300763962 /* TestsFromSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsFromSubjectView.swift; sourceTree = "<group>"; };
-		335294792BB9405D00763962 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		335294792BB9405D00763962 /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewModel.swift; sourceTree = "<group>"; };
 		3352947B2BB945BB00763962 /* TestBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoard.swift; sourceTree = "<group>"; };
 		3352947D2BB9626400763962 /* ChatIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatIndexView.swift; sourceTree = "<group>"; };
 		335294802BB962B900763962 /* ChatStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStore.swift; sourceTree = "<group>"; };
@@ -76,19 +104,29 @@
 		335294962BB97F8A00763962 /* OpenAIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIEndPoint.swift; sourceTree = "<group>"; };
 		3352949A2BB9809700763962 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		3352949C2BB981CA00763962 /* ChatSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSettingsView.swift; sourceTree = "<group>"; };
-		335294B82BC22DE300763962 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		337432572CD359BF00797DFE /* UserAttributeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAttributeViewModel.swift; sourceTree = "<group>"; };
+		337432592CD35BE500797DFE /* Database+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Extensions.swift"; sourceTree = "<group>"; };
+		3374325B2CD4663600797DFE /* Test2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test2.json; sourceTree = "<group>"; };
+		3374325F2CD466ED00797DFE /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		337432612CD4673000797DFE /* UserAnswer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnswer.swift; sourceTree = "<group>"; };
+		337432632CD4675A00797DFE /* UserTestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTestViewModel.swift; sourceTree = "<group>"; };
+		337432652CD4805400797DFE /* Test3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test3.json; sourceTree = "<group>"; };
+		337432662CD4805400797DFE /* Test4.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test4.json; sourceTree = "<group>"; };
+		337432672CD4805400797DFE /* Test5.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test5.json; sourceTree = "<group>"; };
+		337432682CD4805400797DFE /* Test6.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test6.json; sourceTree = "<group>"; };
+		337432692CD4805400797DFE /* Test7.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test7.json; sourceTree = "<group>"; };
+		3374326A2CD4805400797DFE /* Test8.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test8.json; sourceTree = "<group>"; };
+		3374326B2CD4805400797DFE /* Test9.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test9.json; sourceTree = "<group>"; };
+		3374326C2CD4805400797DFE /* Test10.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test10.json; sourceTree = "<group>"; };
+		3374326D2CD4805400797DFE /* Test11.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test11.json; sourceTree = "<group>"; };
+		3374327C2CDDAD9600797DFE /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		33BA32CF2BC67D4600C88D1F /* Test0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Test0.json; sourceTree = "<group>"; };
 		33BA32D12BC67E8100C88D1F /* TestStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStore.swift; sourceTree = "<group>"; };
 		33BA32D32BC6C14B00C88D1F /* Test1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test1.json; sourceTree = "<group>"; };
 		33BA32D52BC7EE8300C88D1F /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
-		33BA32D72BCE5BB300C88D1F /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
-		33BA33202BF100C100C88D1F /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
-		33BA332C2BF1784F00C88D1F /* AuthManager-DeleteAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthManager-DeleteAccount.swift"; sourceTree = "<group>"; };
-		33BA332E2BF1788200C88D1F /* GoogleSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInManager.swift; sourceTree = "<group>"; };
-		33BA33302BF178B800C88D1F /* AppleSignInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInManager.swift; sourceTree = "<group>"; };
+		33BA32D72BCE5BB300C88D1F /* FullTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullTestView.swift; sourceTree = "<group>"; };
 		33BA33322BF17A8200C88D1F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		33BA33342BF17ADE00C88D1F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		33BA33362BF17B2C00C88D1F /* ContentLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLoginView.swift; sourceTree = "<group>"; };
 		33BA33382BF17EBA00C88D1F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		33BA333A2BF17F3200C88D1F /* Quiz-Ocean-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Quiz-Ocean-Info.plist"; sourceTree = SOURCE_ROOT; };
 		33BA333B2BF18F2400C88D1F /* Quiz Ocean.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Quiz Ocean.entitlements"; sourceTree = "<group>"; };
@@ -99,8 +137,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				332AF7852CD0B063008EC1BC /* FirebaseDatabaseSwift in Frameworks */,
 				33BA332B2BF176ED00C88D1F /* GoogleSignInSwift in Frameworks */,
 				33BA33262BF1750100C88D1F /* FirebaseAuth in Frameworks */,
+				332AF7832CD0B063008EC1BC /* FirebaseDatabase in Frameworks */,
 				33BA33292BF176ED00C88D1F /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +179,7 @@
 				335294652BB6B44600763962 /* Quiz_Ocean.xcdatamodeld */,
 				335294602BB6B44600763962 /* Preview Content */,
 				3352948B2BB97BAD00763962 /* AppConstant.swift */,
+				332AF7802CCDC20D008EC1BC /* AppStyle.swift */,
 				33BA33382BF17EBA00C88D1F /* GoogleService-Info.plist */,
 			);
 			path = "Quiz Ocean";
@@ -157,10 +198,10 @@
 			children = (
 				33BA32CC2BC62B7E00C88D1F /* Home */,
 				33BA32CB2BC62B5900C88D1F /* Chat */,
-				335294712BB6C59000763962 /* NavigationTabView.swift */,
+				335294712BB6C59000763962 /* ContentView.swift */,
 				33BA33322BF17A8200C88D1F /* ProfileView.swift */,
+				332AF78A2CD0E06E008EC1BC /* SignUpView.swift */,
 				33BA33342BF17ADE00C88D1F /* LoginView.swift */,
-				33BA33362BF17B2C00C88D1F /* ContentLoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,12 +209,10 @@
 		335294782BB9404A00763962 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				337432612CD4673000797DFE /* UserAnswer.swift */,
+				3374325F2CD466ED00797DFE /* Question.swift */,
+				332AF7882CD0E045008EC1BC /* ScreenDimensions.swift */,
 				33BA33082BDE617600C88D1F /* Chat */,
-				335294792BB9405D00763962 /* Test.swift */,
-				33BA33202BF100C100C88D1F /* AuthManager.swift */,
-				33BA332C2BF1784F00C88D1F /* AuthManager-DeleteAccount.swift */,
-				33BA332E2BF1788200C88D1F /* GoogleSignInManager.swift */,
-				33BA33302BF178B800C88D1F /* AppleSignInManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -181,8 +220,13 @@
 		3352947F2BB9628200763962 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				337432592CD35BE500797DFE /* Database+Extensions.swift */,
+				332AF7862CD0DFDE008EC1BC /* UserViewModel.swift */,
 				335294802BB962B900763962 /* ChatStore.swift */,
 				33BA32D12BC67E8100C88D1F /* TestStore.swift */,
+				337432572CD359BF00797DFE /* UserAttributeViewModel.swift */,
+				335294792BB9405D00763962 /* TestViewModel.swift */,
+				337432632CD4675A00797DFE /* UserTestViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -214,11 +258,15 @@
 		33BA32CC2BC62B7E00C88D1F /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				3374327C2CDDAD9600797DFE /* CalendarView.swift */,
 				335294732BB6C59F00763962 /* HomeView.swift */,
-				335294B82BC22DE300763962 /* CalendarView.swift */,
 				3352947B2BB945BB00763962 /* TestBoard.swift */,
 				335294762BB93A5300763962 /* TestsFromSubjectView.swift */,
-				33BA32D72BCE5BB300C88D1F /* TestView.swift */,
+				33BA32D72BCE5BB300C88D1F /* FullTestView.swift */,
+				333273B92CE0341600796CA9 /* SignInDaysView.swift */,
+				333273BB2CE0348C00796CA9 /* ShopView.swift */,
+				333273BD2CE034B600796CA9 /* HealthView.swift */,
+				333273BF2CE034E000796CA9 /* LevelView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -227,7 +275,17 @@
 			isa = PBXGroup;
 			children = (
 				33BA32CF2BC67D4600C88D1F /* Test0.json */,
+				3374325B2CD4663600797DFE /* Test2.json */,
 				33BA32D32BC6C14B00C88D1F /* Test1.json */,
+				337432652CD4805400797DFE /* Test3.json */,
+				337432662CD4805400797DFE /* Test4.json */,
+				337432672CD4805400797DFE /* Test5.json */,
+				337432682CD4805400797DFE /* Test6.json */,
+				337432692CD4805400797DFE /* Test7.json */,
+				3374326A2CD4805400797DFE /* Test8.json */,
+				3374326B2CD4805400797DFE /* Test9.json */,
+				3374326C2CD4805400797DFE /* Test10.json */,
+				3374326D2CD4805400797DFE /* Test11.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -263,6 +321,8 @@
 				33BA33252BF1750100C88D1F /* FirebaseAuth */,
 				33BA33282BF176ED00C88D1F /* GoogleSignIn */,
 				33BA332A2BF176ED00C88D1F /* GoogleSignInSwift */,
+				332AF7822CD0B063008EC1BC /* FirebaseDatabase */,
+				332AF7842CD0B063008EC1BC /* FirebaseDatabaseSwift */,
 			);
 			productName = "Quiz Ocean";
 			productReference = 335294572BB6B44400763962 /* Quiz Ocean.app */;
@@ -312,6 +372,16 @@
 			files = (
 				33BA32D02BC67D4600C88D1F /* Test0.json in Resources */,
 				335294622BB6B44600763962 /* Preview Assets.xcassets in Resources */,
+				3374326E2CD4805400797DFE /* Test9.json in Resources */,
+				3374326F2CD4805400797DFE /* Test5.json in Resources */,
+				337432702CD4805400797DFE /* Test7.json in Resources */,
+				337432712CD4805400797DFE /* Test8.json in Resources */,
+				337432722CD4805400797DFE /* Test10.json in Resources */,
+				337432732CD4805400797DFE /* Test11.json in Resources */,
+				337432742CD4805400797DFE /* Test4.json in Resources */,
+				337432752CD4805400797DFE /* Test3.json in Resources */,
+				337432762CD4805400797DFE /* Test6.json in Resources */,
+				3374325C2CD4663600797DFE /* Test2.json in Resources */,
 				3352945F2BB6B44600763962 /* Assets.xcassets in Resources */,
 				33BA32D42BC6C14B00C88D1F /* Test1.json in Resources */,
 				33BA33392BF17EBA00C88D1F /* GoogleService-Info.plist in Resources */,
@@ -326,36 +396,44 @@
 			buildActionMask = 2147483647;
 			files = (
 				33BA33332BF17A8200C88D1F /* ProfileView.swift in Sources */,
+				333273BA2CE0341600796CA9 /* SignInDaysView.swift in Sources */,
 				335294972BB97F8A00763962 /* OpenAIEndPoint.swift in Sources */,
 				335294932BB97E5B00763962 /* OpenAIChatAPI.swift in Sources */,
-				335294B92BC22DE300763962 /* CalendarView.swift in Sources */,
 				3352947C2BB945BC00763962 /* TestBoard.swift in Sources */,
-				33BA33312BF178B800C88D1F /* AppleSignInManager.swift in Sources */,
+				332AF7812CCDC216008EC1BC /* AppStyle.swift in Sources */,
 				335294882BB9668400763962 /* OpenAIChatConversation.swift in Sources */,
 				3352949D2BB981CA00763962 /* ChatSettingsView.swift in Sources */,
-				3352947A2BB9405D00763962 /* Test.swift in Sources */,
+				337432642CD4675D00797DFE /* UserTestViewModel.swift in Sources */,
+				333273BC2CE0348C00796CA9 /* ShopView.swift in Sources */,
+				3352947A2BB9405D00763962 /* TestViewModel.swift in Sources */,
 				33BA32D22BC67E8100C88D1F /* TestStore.swift in Sources */,
-				33BA332F2BF1788200C88D1F /* GoogleSignInManager.swift in Sources */,
 				335294952BB97EA000763962 /* OpenAIMessage.swift in Sources */,
+				3374327E2CDDAD9600797DFE /* CalendarView.swift in Sources */,
 				33BA32D62BC7EE8300C88D1F /* ChatDetailView.swift in Sources */,
+				332AF78B2CD0E072008EC1BC /* SignUpView.swift in Sources */,
 				335294742BB6C59F00763962 /* HomeView.swift in Sources */,
 				335294772BB93A5300763962 /* TestsFromSubjectView.swift in Sources */,
 				335294672BB6B44600763962 /* Quiz_Ocean.xcdatamodeld in Sources */,
 				335294812BB962B900763962 /* ChatStore.swift in Sources */,
 				335294702BB6C56400763962 /* ChatView.swift in Sources */,
 				335294862BB9651300763962 /* Chat.swift in Sources */,
-				33BA33212BF100C100C88D1F /* AuthManager.swift in Sources */,
+				333273C02CE034E000796CA9 /* LevelView.swift in Sources */,
+				337432622CD4673800797DFE /* UserAnswer.swift in Sources */,
 				3352947E2BB9626400763962 /* ChatIndexView.swift in Sources */,
-				33BA33372BF17B2C00C88D1F /* ContentLoginView.swift in Sources */,
-				335294722BB6C59000763962 /* NavigationTabView.swift in Sources */,
+				337432602CD466F000797DFE /* Question.swift in Sources */,
+				335294722BB6C59000763962 /* ContentView.swift in Sources */,
 				3352948E2BB97CD000763962 /* UserSettings.swift in Sources */,
+				332AF7872CD0DFE4008EC1BC /* UserViewModel.swift in Sources */,
+				333273BE2CE034B600796CA9 /* HealthView.swift in Sources */,
 				3352949B2BB9809700763962 /* UserSettingsView.swift in Sources */,
 				335294902BB97DDB00763962 /* ChatManager.swift in Sources */,
+				337432582CD359BF00797DFE /* UserAttributeViewModel.swift in Sources */,
 				3352945B2BB6B44400763962 /* Quiz_OceanApp.swift in Sources */,
 				3352948A2BB97AEF00763962 /* ChatSettings.swift in Sources */,
-				33BA332D2BF1784F00C88D1F /* AuthManager-DeleteAccount.swift in Sources */,
 				335294842BB963F100763962 /* Conversation.swift in Sources */,
-				33BA32D82BCE5BB300C88D1F /* TestView.swift in Sources */,
+				332AF7892CD0E04B008EC1BC /* ScreenDimensions.swift in Sources */,
+				33BA32D82BCE5BB300C88D1F /* FullTestView.swift in Sources */,
+				3374325A2CD35BEE00797DFE /* Database+Extensions.swift in Sources */,
 				33BA33352BF17ADE00C88D1F /* LoginView.swift in Sources */,
 				3352948C2BB97BAD00763962 /* AppConstant.swift in Sources */,
 			);
@@ -583,6 +661,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		332AF7822CD0B063008EC1BC /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseDatabase;
+		};
+		332AF7842CD0B063008EC1BC /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseDatabaseSwift;
+		};
 		33BA33252BF1750100C88D1F /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 33BA33242BF1750100C88D1F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -1,0 +1,48 @@
+{
+    "level": "High School",
+    "subject": "Calculator Applications",
+    "year": "2024",
+    "paperIndex": "#19",
+    "questions": [
+        {
+            "content": "Calculate the sum of 528.75 + 362.45.",
+            "answer": "891.2"
+        },
+        {
+            "content": "Find the product of 7.5 × 4.2.",
+            "answer": "31.5"
+        },
+        {
+            "content": "What is 1440 ÷ 60?",
+            "answer": "24"
+        },
+        {
+            "content": "If you invest $1,200 at an interest rate of 5% per year, how much interest will you earn after 3 years?",
+            "answer": "180"
+        },
+        {
+            "content": "Calculate the difference: 85.9 - 39.6.",
+            "answer": "46.3"
+        },
+        {
+            "content": "What is the value of 9²?",
+            "answer": "81"
+        },
+        {
+            "content": "Evaluate the expression: (5 + 3) × (4 - 2).",
+            "answer": "16"
+        },
+        {
+            "content": "What is the average of the numbers 25, 45, 65, and 85?",
+            "answer": "55"
+        },
+        {
+            "content": "Find the square root of 625.",
+            "answer": "25"
+        },
+        {
+            "content": "What is 15% of 450?",
+            "answer": "67.5"
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "level": "High School",
+    "subject": "General Science",
+    "year": "2024",
+    "paperIndex": "#22",
+    "questions": [
+        {
+            "content": "What is the chemical formula for glucose?",
+            "answer": "C6H12O6"
+        },
+        {
+            "content": "What process do plants use to convert sunlight into chemical energy?",
+            "answer": "Photosynthesis"
+        },
+        {
+            "content": "Which part of the atom contains protons and neutrons?",
+            "answer": "Nucleus"
+        },
+        {
+            "content": "What is the law of conservation of mass?",
+            "answer": "Mass is neither created nor destroyed in a chemical reaction"
+        },
+        {
+            "content": "What is the main function of red blood cells?",
+            "answer": "To transport oxygen"
+        },
+        {
+            "content": "Which organ is primarily responsible for detoxifying chemicals in the body?",
+            "answer": "Liver"
+        },
+        {
+            "content": "What is the pH level of pure water at 25°C?",
+            "answer": "7"
+        },
+        {
+            "content": "What is the name of the largest bone in the human body?",
+            "answer": "Femur"
+        },
+        {
+            "content": "What is the primary gas responsible for global warming?",
+            "answer": "Carbon dioxide"
+        },
+        {
+            "content": "What is Newton's second law of motion?",
+            "answer": "Force equals mass times acceleration (F = ma)"
+        }
+    ]
+}

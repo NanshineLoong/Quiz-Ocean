@@ -1,0 +1,48 @@
+{
+    "level": "Middle School",
+    "subject": "General Mathematics",
+    "year": "2024",
+    "paperIndex": "#16",
+    "questions": [
+        {
+            "content": "What is the value of 12 × 4?",
+            "answer": "48"
+        },
+        {
+            "content": "If y = 8, what is the value of 5y - 3?",
+            "answer": "37"
+        },
+        {
+            "content": "Solve for x: x + 15 = 23",
+            "answer": "8"
+        },
+        {
+            "content": "What is the perimeter of a square with side length 6 cm?",
+            "answer": "24"
+        },
+        {
+            "content": "Convert 0.2 to a percentage.",
+            "answer": "20"
+        },
+        {
+            "content": "What is the area of a rectangle with length 9 cm and width 4 cm?",
+            "answer": "36"
+        },
+        {
+            "content": "If a triangle has angles of 60° and 90°, what is the third angle?",
+            "answer": "30"
+        },
+        {
+            "content": "What is the least common multiple of 3 and 7?",
+            "answer": "21"
+        },
+        {
+            "content": "A bag contains 4 red, 5 blue, and 1 green marble. What is the total number of marbles?",
+            "answer": "10"
+        },
+        {
+            "content": "What is 25% of 80?",
+            "answer": "20"
+        }
+    ]
+}

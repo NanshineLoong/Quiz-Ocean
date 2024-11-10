@@ -5,161 +5,135 @@
 //  Created by Nanshine on 2024/4/10.
 //
 
-import Foundation
 import SwiftUI
+import FirebaseAuth
+import FirebaseDatabase
 
-@MainActor
-final class TestStore: ObservableObject {
-    var tests = [Test]()
-    @Published var userTests = [UserTest]()
-    let userid: UUID
+class TestStore: ObservableObject {
+    @Published var tests = [TestViewModel]()
+    @Published var isLoading = true
     
-    #if DEBUG
-    static let sample: TestStore = {
-        let testStore = TestStore(userid: UUID())
-        testStore.tests = [Test.sample]
-        return testStore
-    }()
-    #endif
+    private var ref = Database.root
+    private var refHandle: DatabaseHandle?
     
-    init(userid: UUID) {
-        self.userid = userid
+    private func getCurrentUserID() -> String? {
+        return Auth.auth().currentUser?.uid
     }
     
-    // set up the Test Store data
-    //
-    // load tests and userTests from files
     func setup() {
-        tests.removeAll()
-        
-        // Tests
-        let filenums = 1
+        // Set up a listener for changes at the "tests" child path
+        refHandle = ref.child("tests").observe(.value) { snapshot in
+            var newTests = [TestViewModel]()
+            
+            // Iterate through each child of the snapshot to create Test objects
+            for child in snapshot.children {
+                if let childSnapshot = child as? DataSnapshot,
+                   let testData = childSnapshot.value as? [String: Any],
+                   let test = TestViewModel(id: childSnapshot.key, dict: testData) {
+                    newTests.append(test)
+                }
+            }
+            print(newTests.count)
+            
+            // Update the published tests property
+            DispatchQueue.main.async {
+                self.tests = newTests
+                self.isLoading = false
+            }
+        }
+    }
+    func uploadLocalTests() {
+        var testsToUpload = [Dictionary<String, Any>]()
+        let filenums = 11
         for i in 0...filenums {
             let filename = "Test\(i)"
             if let loadedtest = loadTestFromBundle(filename: filename) {
-                tests.append(loadedtest)
+                testsToUpload.append(loadedtest)
             } else {
                 // Have printed the error message
             }
         }
         
-        // UserTests
-        if let loadedUserTests = loadUserTests(userId: self.userid) {
-            userTests = loadedUserTests
-        } else {
-            // Have printed the error message
+        // Upload questions and tests to Firebase
+        for var test in testsToUpload {
+            guard let questions = test["questions"] as? [[String: Any]] else {
+                print("Questions not found or invalid format in test: \(test)")
+                continue
+            }
+            
+            var questionIds = [String]()
+            let dispatchGroup = DispatchGroup()
+            
+            // upload questions
+            for question in questions {
+                dispatchGroup.enter()
+                let questionRef = ref.child("questions").childByAutoId()
+                questionRef.setValue(question) { error, ref in
+                    if let error = error {
+                        print("Failed to upload question: \(error)")
+                    } else {
+                        if let questionId = ref.key {
+                            questionIds.append(questionId)
+                        }
+                    }
+                    dispatchGroup.leave()
+                }
+            }
+            
+            // upload test
+            dispatchGroup.notify(queue: .main) {
+                test["questions"] = questionIds
+                let testRef = self.ref.child("tests").childByAutoId()
+                testRef.setValue(test) { error, ref in
+                    if let error = error {
+                        print("Failed to upload test: \(error)")
+                    } else {
+                        print("Successfully uploaded test with id \(ref.key ?? "unknown")")
+                    }
+                }
+            }
         }
     }
     
-    // save the Test Store data
-    //
-    // stores userTests into a file
-    func save() {
-        guard !userTests.isEmpty else { return }
-        do {
-            let url = getDocumentsDirectory().appendingPathComponent("userTests_\(userid).json")
-            let data = try JSONEncoder().encode(userTests)
-            try data.write(to: url)
-        } catch {
-            assertionFailure("Failed to save UserTests.")
-        }
-    }
-    
-    func loadTestFromBundle(filename: String) -> Test? {
+    func loadTestFromBundle(filename: String) -> [String: Any]? {
         guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
             print("Failed to locate \(filename).json in Bundle.")
             return nil
         }
-        
+
         do {
             let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            let test = try decoder.decode(Test.self, from: data)
-            print("Successfully load \(filename).json in Bundle.")
-            return test
+            if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                print("Successfully loaded \(filename).json from Bundle.")
+                return jsonObject
+            } else {
+                print("Failed to cast JSON data as dictionary for \(filename).json.")
+            }
         } catch {
             print("Failed to decode \(filename).json from Bundle.")
         }
+        return nil
+    }
 
-        return nil
-    }
-    
-    func loadUserTests(userId: UUID) -> [UserTest]? {
-        let fileurl = getDocumentsDirectory().appendingPathComponent("userTests_\(userId).json")
-        if let data = try? Data(contentsOf: fileurl) {
-            let decoder = JSONDecoder()
-            if let loadedUserTests = try? decoder.decode([UserTest].self, from: data) {
-                return loadedUserTests
-            }
-        }
-        print("Failed to decode \(userId)'s UserTests.")
-        return nil
-    }
-    
-    func saveUserTest(userId: UUID, userTest: UserTest) {
-        if let index = userTests.firstIndex(where: {$0.testid == userTest.testid}) {
-            userTests[index] = userTest
-        } else {
-            userTests.append(userTest)
-        }
-        
-        do {
-            let fileurl = getDocumentsDirectory().appendingPathComponent("userTests_\(userId).json")
-            let data = try JSONEncoder().encode(userTests)
-            try data.write(to: fileurl, options: .atomic)
-        } catch {
-            print(error)
+    deinit {
+        // Remove observer when this instance is deallocated
+        if let refHandle = refHandle {
+            ref.child("tests").removeObserver(withHandle: refHandle)
         }
     }
     
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
     
-    func findUserTestFromTest(from test: Test) -> UserTest? {
-        userTests.first { $0.testid == test.id }
-    }
     
-    func filterTestsFromSubject(from subject: Subject) -> [Test] {
+//    func findUserTestFromTest(from test: TestViewModel) -> UserTestViewModel? {
+//        userTests.first { $0.testid == test.id }
+//    }
+//    
+    func filterTestsFromSubject(from subject: String) -> [TestViewModel] {
         tests.filter {$0.subject == subject}
     }
     
-    func filterStaredTests() -> [Test] {
-        tests.filter {findUserTestFromTest(from: $0)?.stared ?? false}
-    }
-    
-    func filterFinishedTests() -> [Test] {
-        tests.filter {(findUserTestFromTest(from: $0)?.score != nil)}
-    }
-    
-    func filterScheduledTests() -> [Test] {
-        tests.filter { test in
-            guard let usertest = findUserTestFromTest(from: test) else {
-                return false
-            }
-            // reture unfinished but scheduled test
-            return usertest.score == nil && usertest.scheduledDate != nil
-        }
-    }
-    
-    func filterScheduledTests(on date: Date, for calendar: Calendar) -> [Test] {
-        tests.filter { test in
-            guard let usertest = findUserTestFromTest(from: test), let scheduledDate = usertest.scheduledDate else {
-                return false
-            }
-            return calendar.isDate(date, inSameDayAs: scheduledDate)
-        }
-    }
-    
-    func bindingForUserTest(from test: Test) -> Binding<UserTest?> {
-        Binding<UserTest?> (
-            get: { self.findUserTestFromTest(from: test)},
-            set: {newValue in
-                if let newValue = newValue {
-                    self.saveUserTest(userId: self.userid, userTest: newValue)
-                }
-            }
-        )
+    func getRandomTestsForSubject(_ subject: String) -> [TestViewModel] {
+        let filteredTests = tests.filter { $0.subject == subject }
+        return Array(filteredTests.shuffled().prefix(3))
     }
 }

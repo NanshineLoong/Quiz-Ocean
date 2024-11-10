@@ -2,10 +2,58 @@
 //  CalendarView.swift
 //  Quiz Ocean
 //
-//  Created by Nanshine on 2024/4/7.
+//  Created by Nanshine on 2024/11/8.
 //
 
 import SwiftUI
+
+// 数据模型，表示每一天的签到状态
+struct CalendarDay: Identifiable {
+    let id = UUID()
+    let date: Date
+    let isSignedIn: Bool
+}
+
+// 视图模型，用于生成当前月份的签到数据
+class CalendarViewModel: ObservableObject {
+    @Published var days: [CalendarDay] = []
+
+    private let calendar = Calendar.current
+    private let dateFormatter = DateFormatter()
+
+    init() {
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        generateCalendarDays()
+    }
+
+    // 生成当前月份的签到数据
+    func generateCalendarDays() {
+        let today = Date()
+        guard let range = calendar.range(of: .day, in: .month, for: today),
+              let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: today))
+        else { return }
+        
+        days = range.compactMap { day -> CalendarDay? in
+            guard let date = calendar.date(byAdding: .day, value: day - 1, to: startOfMonth) else { return nil }
+
+            // 随机签到状态（实际应用中，可以替换为真实数据）
+            let isSignedIn = Bool.random()
+            return CalendarDay(date: date, isSignedIn: isSignedIn)
+        }
+    }
+
+    // 返回指定日期的天数
+    func dayString(for date: Date) -> String {
+        let day = calendar.component(.day, from: date)
+        return "\(day)"
+    }
+
+    // 检查是否是当前日期
+    func isToday(date: Date) -> Bool {
+        calendar.isDateInToday(date)
+    }
+}
+
 
 struct CalendarView: View {
     private let calendar: Calendar
@@ -17,7 +65,7 @@ struct CalendarView: View {
     @State private var selectedDate = Self.now
     private static var now = Date()
     
-    @EnvironmentObject var testStore: TestStore
+    @EnvironmentObject var userAttribute: UserAttributeViewModel
     
     init(calendar: Calendar) {
         self.calendar = calendar
@@ -35,41 +83,18 @@ struct CalendarView: View {
                 content: { date in
                     ZStack {
                         Button(action: { selectedDate = date }) {
+                            let dateString = DateFormatter.standard.string(from: date)
+                            let isSignedIn = userAttribute.signInDates.contains(dateString)
+                            
                             Text(dayFormatter.string(from: date))
                                 .padding(6)
                                 // Added to make selection sizes equal on all numbers.
                                 .frame(width: 33, height: 33)
-                                .foregroundColor(calendar.isDateInToday(date) ? Color.white : .primary)
+                                .foregroundColor(calendar.isDateInToday(date) ? Color.red : .primary)
                                 .background(
-                                    calendar.isDateInToday(date) ? Color.red
-                                    : calendar.isDate(date, inSameDayAs: selectedDate) ? .blue
-                                    : .clear
+                                    isSignedIn ? .green : .clear
                                 )
                                 .cornerRadius(7)
-                        }
-                        
-                        if (numberOfEventsInDate(date: date) >= 2) {
-                            Circle()
-                                .size(CGSize(width: 5, height: 5))
-                                .foregroundColor(Color.green)
-                                .offset(x: CGFloat(17),
-                                        y: CGFloat(33))
-                        }
-                        
-                        if (numberOfEventsInDate(date: date) >= 1) {
-                            Circle()
-                                .size(CGSize(width: 5, height: 5))
-                                .foregroundColor(Color.green)
-                                .offset(x: CGFloat(24),
-                                        y: CGFloat(33))
-                        }
-                        
-                        if (numberOfEventsInDate(date: date) >= 3) {
-                            Circle()
-                                .size(CGSize(width: 5, height: 5))
-                                .foregroundColor(Color.green)
-                                .offset(x: CGFloat(31),
-                                        y: CGFloat(33))
                         }
                     }
                 },
@@ -149,18 +174,6 @@ struct CalendarView: View {
             .equatable()
         }
     }
-    
-    func numberOfEventsInDate(date: Date) -> Int {
-        var count: Int = 0
-        for userTest in testStore.userTests {
-            if let scheduledDate = userTest.scheduledDate {
-                if calendar.isDate(date, inSameDayAs: scheduledDate) {
-                    count += 1
-                }
-            }
-        }
-        return count
-    }
 }
 
 // MARK: - Component
@@ -223,42 +236,10 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
             }
             .frame(height: days.count == 42 ? 300 : 270)
             .shadow(color: colorScheme == .dark ? .white.opacity(0.4) : .black.opacity(0.35), radius: 5)
-            
-            ForEach(testStore.filterScheduledTests(on: date, for: calendar)) { test in
-                NavigationLink {
-                    TestView(test: test, userTest: testStore.bindingForUserTest(from: test))
-                } label: {
-                    ScheduleCardView(test: test)
-                }
-            }
         }
     }
 }
 
-
-struct ScheduleCardView: View {
-    var test: Test
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text(test.subject.fullName) // 显示科目的全名
-                    .font(.headline)
-                Spacer()
-                Text(test.level.rawValue) // 显示级别
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-            Text("Year: \(test.year)") // 显示年份
-            Text("Paper Index: \(test.paperIndex)") // 显示试卷索引
-            Text("Questions: \(test.questions.count)") // 显示问题数量
-        }
-        .padding()
-        .background(Color.gray.opacity(0.2)) // 背景颜色
-        .cornerRadius(10)
-        .padding(.horizontal)
-    }
-}
 
 // MARK: - Conformances
 
@@ -333,13 +314,7 @@ private extension DateFormatter {
     }
 }
 
-// MARK: - Previews
 
-#if DEBUG
-struct CalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarView(calendar: Calendar(identifier: .gregorian))
-            .environmentObject(TestStore.sample)
-    }
+#Preview {
+    CalendarView(calendar: Calendar(identifier: .gregorian))
 }
-#endif

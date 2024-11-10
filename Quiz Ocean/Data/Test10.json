@@ -1,0 +1,48 @@
+{
+    "level": "Middle School",
+    "subject": "General Science",
+    "year": "2024",
+    "paperIndex": "#21",
+    "questions": [
+        {
+            "content": "What is the process by which water vapor turns into liquid water?",
+            "answer": "Condensation"
+        },
+        {
+            "content": "What is the basic unit of life?",
+            "answer": "Cell"
+        },
+        {
+            "content": "What is the powerhouse of the cell?",
+            "answer": "Mitochondria"
+        },
+        {
+            "content": "Which planet is known for its rings?",
+            "answer": "Saturn"
+        },
+        {
+            "content": "What type of energy is stored in food?",
+            "answer": "Chemical"
+        },
+        {
+            "content": "What is the main gas found in the Earth's atmosphere?",
+            "answer": "Nitrogen"
+        },
+        {
+            "content": "What is the force that opposes motion between two surfaces in contact?",
+            "answer": "Friction"
+        },
+        {
+            "content": "What type of bond involves the sharing of electron pairs between atoms?",
+            "answer": "Covalent bond"
+        },
+        {
+            "content": "What is the term for a living organism's ability to maintain stable internal conditions?",
+            "answer": "Homeostasis"
+        },
+        {
+            "content": "What is the name of the scale used to measure the acidity or alkalinity of a solution?",
+            "answer": "pH scale"
+        }
+    ]
+}

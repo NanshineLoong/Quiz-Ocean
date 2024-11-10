@@ -1,0 +1,48 @@
+{
+    "level": "Middle School",
+    "subject": "Calculator Applications",
+    "year": "2024",
+    "paperIndex": "#17",
+    "questions": [
+        {
+            "content": "Calculate the sum of 123.45 + 67.89.",
+            "answer": "191.34"
+        },
+        {
+            "content": "Find the product of 15.6 × 3.2.",
+            "answer": "49.92"
+        },
+        {
+            "content": "What is 400 ÷ 25?",
+            "answer": "16"
+        },
+        {
+            "content": "If you have $150 and spend $45.50, how much do you have left?",
+            "answer": "104.50"
+        },
+        {
+            "content": "Calculate the difference: 88.9 - 37.4.",
+            "answer": "51.5"
+        },
+        {
+            "content": "What is the value of 8²?",
+            "answer": "64"
+        },
+        {
+            "content": "Evaluate the expression: (6 + 2) × 5.",
+            "answer": "40"
+        },
+        {
+            "content": "What is the average of the numbers 10, 20, 30, and 40?",
+            "answer": "25"
+        },
+        {
+            "content": "Find the square root of 144.",
+            "answer": "12"
+        },
+        {
+            "content": "What is 15% of 250?",
+            "answer": "37.5"
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "level": "Middle School",
+    "subject": "General Mathematics",
+    "year": "2024",
+    "paperIndex": "#14",
+    "questions": [
+        {
+            "content": "What is the value of 7 × 8?",
+            "answer": "56"
+        },
+        {
+            "content": "If x = 5, what is the value of 2x + 3?",
+            "answer": "13"
+        },
+        {
+            "content": "Solve for y: 3y - 9 = 0",
+            "answer": "3"
+        },
+        {
+            "content": "What is the perimeter of a rectangle with length 8 cm and width 5 cm?",
+            "answer": "26"
+        },
+        {
+            "content": "Convert 0.75 to a fraction in simplest form.",
+            "answer": "3/4"
+        },
+        {
+            "content": "What is the area of a circle with radius 7 cm? (Use π = 3.14)",
+            "answer": "153.86"
+        },
+        {
+            "content": "What is the least common multiple of 4 and 6?",
+            "answer": "12"
+        },
+        {
+            "content": "A box contains 3 red balls, 5 blue balls, and 2 green balls. What is the probability of picking a blue ball?",
+            "answer": "1/2"
+        },
+        {
+            "content": "What is 15% of 200?",
+            "answer": "30"
+        }
+    ]
+}
