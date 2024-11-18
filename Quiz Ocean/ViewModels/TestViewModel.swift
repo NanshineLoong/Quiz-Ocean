@@ -9,86 +9,129 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-class TestViewModel: ObservableObject, Identifiable{
-    var id: String
-    var subject: String
-    var level: String
-    var year: String
-    var paperIndex: String
-    var questionIDs: [String] // 存储 question 的 ID 列表
+class TestViewModel: ObservableObject, Hashable{
+    @Published var questions: [Question] = []
+    @Published var userAnswers: [String]?
+    @Published var score: Int?
+    var testId: String?
+    var questionIDs: [String]
+        
     
-    // 存储下载后的具体 Question 对象
-    @Published var downloadedQuestions: [Question]?
     private var ref = Database.root
     
-    init(id: String, subject: String, level: String, year: String, paperIndex: String, questionIDs: [String]) {
-        self.id = id
-        self.subject = subject
-        self.level = level
-        self.year = year
-        self.paperIndex = paperIndex
+    init(questionIDs: [String], testId: String?=nil) {
         self.questionIDs = questionIDs
-    }
-    
-    convenience init?(id: String, dict: [String: Any]) {
-        guard let subject = dict["subject"] as? String,
-              let level = dict["level"] as? String,
-              let year = dict["year"] as? String,
-              let paperIndex = dict["paperIndex"] as? String,
-              let questionIDs = dict["questions"] as? [String] else {
-            return nil
-        }
-        
-        self.init(id: id, subject: subject, level: level, year: year, paperIndex: paperIndex, questionIDs: questionIDs)
-    }
-    
-    /// 从 Firebase 下载所有问题，并存储在 downloadedQuestions 中
-    func fetchQuestions() {
-        var questions = [Question]()
-        let totalQuestions = questionIDs.count
-        var completedQuestions = 0
-        
-        for questionID in questionIDs {
-            ref.child("questions/\(questionID)").observeSingleEvent(of: .value, with: { snapshot in
-                if let value = snapshot.value as? [String: Any],
-                   let question = Question(id: questionID, dict: value) {
-                    questions.append(question)
-                }
-                completedQuestions += 1
-                if completedQuestions == totalQuestions {
-                    DispatchQueue.main.async {
-                        self.downloadedQuestions = questions
-                    }
-                }
-            })
-        }
-//        self.downloadedQuestions = questions // 提问：这样写会有什么问题
-        
-    }
-    
-    /// 清除下载的具体问题数据
-    func discardQuestions() {
-        downloadedQuestions = nil
+        self.testId = testId
     }
     
     func getCurrentUserID() -> String? {
         return Auth.auth().currentUser?.uid
     }
     
-    func fetchUserTestID(completion: @escaping (String?) -> Void) {
-        guard let userID = getCurrentUserID() else {
-            completion(nil)
+/// 从 Firebase 下载用户的答案，并存储在 userAnswers 中
+    private func fetchUserAnswers(testId: String, completion: @escaping () -> Void) {
+        guard let uid = getCurrentUserID() else {
+            print("Error fetching user answers: No user ID found")
+            completion()
             return
         }
-        ref.child("test-usertest/\(userID)/\(id)").observeSingleEvent(of: .value, with: { snapshot in
-            if let value = snapshot.value as? String {
-                completion(value)
-            } else {
-                completion(nil)
+        ref.child("user-test/\(uid)/\(testId)").observeSingleEvent(of: .value) { snapshot in
+            if let value = snapshot.value as? [String: Any] {
+                self.userAnswers = value["userAnswers"] as? [String]
+                self.score = value["score"] as? Int ?? 0
             }
-        }) { error in
-            print("Error fetching user test ID: \(error.localizedDescription)")
-            completion(nil)
+            completion()
         }
     }
+
+    /// 从 Firebase 下载所有问题，并存储在 questions 中
+    private func fetchQuestions(completion: @escaping () -> Void) {
+        ref.child("question").getData { error, snapshot in
+            guard error == nil else {
+                print("Error getting data \(error!)")
+                completion()
+                return
+            }
+
+            if let value = snapshot?.value as? [String: [String: Any]] {
+                var questions = [Question]()
+                for questionID in self.questionIDs {
+                    if let questionDict = value[questionID],
+                       let question = Question(id: questionID, dict: questionDict) {
+                        questions.append(question)
+                    }
+                }
+                DispatchQueue.main.async {
+                    self.questions = questions
+                }
+            }
+            completion()
+        }
+    }
+
+    /// 综合调用 fetchQuestions 和 fetchUserAnswers，并在完成后执行 completion
+    func fetchData(completion: @escaping () -> Void) {
+        // 使用 DispatchGroup 同步两个异步操作
+        let dispatchGroup = DispatchGroup()
+
+        // 下载问题数据
+        dispatchGroup.enter()
+        fetchQuestions {
+            dispatchGroup.leave()
+        }
+
+        // 下载用户答案数据
+        if let testId = testId {
+            dispatchGroup.enter()
+            fetchUserAnswers(testId: testId) {
+                dispatchGroup.leave()
+            }
+        }
+
+        // 所有操作完成后调用 completion
+        dispatchGroup.notify(queue: .main) {
+            completion()
+        }
+    }
+    
+    
+    func submitTest() {
+        guard let userID = getCurrentUserID() else {
+            print("Error submitting test: No user ID found")
+            return
+        }
+        guard let userAnswers = self.userAnswers else { return }
+        score = zip(userAnswers, questions).filter { $0.0 == $0.1.answer }.count * 5
+        if let testId = testId {
+            ref.child("user-test/\(userID)/\(testId)").setValue([
+                "userAnswers": userAnswers,
+                "score": score ?? 0
+            ])
+        }
+    }
+    
+    static func == (lhs: TestViewModel, rhs: TestViewModel) -> Bool {
+        return lhs.testId == rhs.testId
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(testId)
+    }
+    
+//    func fetchUserTestID(completion: @escaping (String?) -> Void) {
+//        guard let userID = getCurrentUserID() else {
+//            completion(nil)
+//            return
+//        }
+//        ref.child("user-test/\(userID)/\(testId)").observeSingleEvent(of: .value, with: { snapshot in
+//            if let value = snapshot.value as? String {
+//                completion(value)
+//            } else {
+//                completion(nil)
+//            }
+//        }) { error in
+//            print("Error fetching user test ID: \(error.localizedDescription)")
+//            completion(nil)
+//        }
+//    }
 }

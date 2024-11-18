@@ -1,48 +1,28 @@
 {
-    "level": "Middle School",
-    "subject": "Number Sense",
-    "year": "2024",
-    "paperIndex": "#24",
+    "level": "Middle",
+    "subject": "General Science",
+    "year": "2023",
+    "paperIndex": "2",
     "questions": [
         {
-            "content": "What is 25% of 80?",
-            "answer": "20"
+            "content": "Which is a benefit of a wetland area in an ecosystem?",
+            "answer": "Wetlands store and slowly release surface water, rain, groundwater, and flood waters.",
+            "candidates": [
+                "Wetlands store and slowly release surface water, rain, groundwater, and flood waters.",
+                "Vegetation and soil in wetlands add more nitrogen and phosphorus to water.",
+                "Wetlands cause more pollutants and excess nutrients in water.",
+                "Wetlands increase environmental problems such as algal blooms."
+            ]
         },
         {
-            "content": "What is the sum of 45 and 67?",
-            "answer": "112"
-        },
-        {
-            "content": "If a triangle has angles measuring 60° and 30°, what is the measure of the third angle?",
-            "answer": "90"
-        },
-        {
-            "content": "What is the product of 9 and 7?",
-            "answer": "63"
-        },
-        {
-            "content": "Calculate the value of 5².",
-            "answer": "25"
-        },
-        {
-            "content": "If you divide 144 by 12, what is the result?",
-            "answer": "12"
-        },
-        {
-            "content": "What is the perimeter of a rectangle with a length of 10 cm and a width of 4 cm?",
-            "answer": "28"
-        },
-        {
-            "content": "What is the difference between 150 and 68?",
-            "answer": "82"
-        },
-        {
-            "content": "If you have a pizza cut into 8 slices and you eat 3, how many slices are left?",
-            "answer": "5"
-        },
-        {
-            "content": "What is the average of the numbers 12, 14, and 16?",
-            "answer": "14"
+            "content": "A group of chemicals that were formerly used in manufacturing of products known as “PCBs” persist in the environment.  What does “PCBs” stand for?",
+            "answer": "Polychlorinated Biphenyls",
+            "candidates": [
+                "polluted Copper biproducts",
+                "Polymer bicarbonates",
+                "pieces of contaminated biofood",
+                "Polychlorinated Biphenyls"
+            ]
         }
     ]
 }

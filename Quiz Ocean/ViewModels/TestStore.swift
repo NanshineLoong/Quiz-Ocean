@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class TestStore: ObservableObject {
-    @Published var tests = [TestViewModel]()
+    @Published var tests = [StaticTest]()
     @Published var isLoading = true
     
     private var ref = Database.root
@@ -22,18 +22,18 @@ class TestStore: ObservableObject {
     
     func setup() {
         // Set up a listener for changes at the "tests" child path
-        refHandle = ref.child("tests").observe(.value) { snapshot in
-            var newTests = [TestViewModel]()
+        refHandle = ref.child("static-test").observe(.value) { snapshot in
+            var newTests = [StaticTest]()
             
             // Iterate through each child of the snapshot to create Test objects
             for child in snapshot.children {
                 if let childSnapshot = child as? DataSnapshot,
                    let testData = childSnapshot.value as? [String: Any],
-                   let test = TestViewModel(id: childSnapshot.key, dict: testData) {
+                   let test = StaticTest(id: childSnapshot.key, dict: testData) {
                     newTests.append(test)
                 }
             }
-            print(newTests.count)
+//            print(newTests.count)
             
             // Update the published tests property
             DispatchQueue.main.async {
@@ -42,6 +42,28 @@ class TestStore: ObservableObject {
             }
         }
     }
+    
+    func getStaticTest(subject: String, level: String, year: String, paperIndex: String) -> StaticTest? {
+        return tests.first { test in
+            test.subject == subject &&
+            test.level == level &&
+            test.year == year &&
+            test.paperIndex == paperIndex
+        }
+    }
+    
+    func getYears(for subject: String?) -> [String] {
+        guard let subject = subject else { return [] }
+        return Array(Set(tests.filter { $0.subject == subject }.map { $0.year })).sorted()
+    }
+    
+    func getPaperIndices(subject: String, level: String, year: String) -> [String] {
+        return tests
+            .filter { $0.subject == subject && $0.level == level && $0.year == year }
+            .map { $0.paperIndex }
+            .sorted()
+    }
+    
     func uploadLocalTests() {
         var testsToUpload = [Dictionary<String, Any>]()
         let filenums = 11
@@ -67,7 +89,7 @@ class TestStore: ObservableObject {
             // upload questions
             for question in questions {
                 dispatchGroup.enter()
-                let questionRef = ref.child("questions").childByAutoId()
+                let questionRef = ref.child("question").childByAutoId()
                 questionRef.setValue(question) { error, ref in
                     if let error = error {
                         print("Failed to upload question: \(error)")
@@ -83,7 +105,7 @@ class TestStore: ObservableObject {
             // upload test
             dispatchGroup.notify(queue: .main) {
                 test["questions"] = questionIds
-                let testRef = self.ref.child("tests").childByAutoId()
+                let testRef = self.ref.child("static-test").childByAutoId()
                 testRef.setValue(test) { error, ref in
                     if let error = error {
                         print("Failed to upload test: \(error)")
@@ -114,7 +136,14 @@ class TestStore: ObservableObject {
         }
         return nil
     }
-
+    
+    func isTestFinished(testID: String, completion: @escaping (Bool) -> Void) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        ref.child("userTests/\(uid)/\(testID)").observeSingleEvent(of: .value) { snapshot in
+            completion(snapshot.exists())
+        }
+    }
+    
     deinit {
         // Remove observer when this instance is deallocated
         if let refHandle = refHandle {
@@ -128,12 +157,8 @@ class TestStore: ObservableObject {
 //        userTests.first { $0.testid == test.id }
 //    }
 //    
-    func filterTestsFromSubject(from subject: String) -> [TestViewModel] {
+    func filterTestsFromSubject(from subject: String) -> [StaticTest] {
         tests.filter {$0.subject == subject}
     }
     
-    func getRandomTestsForSubject(_ subject: String) -> [TestViewModel] {
-        let filteredTests = tests.filter { $0.subject == subject }
-        return Array(filteredTests.shuffled().prefix(3))
-    }
 }

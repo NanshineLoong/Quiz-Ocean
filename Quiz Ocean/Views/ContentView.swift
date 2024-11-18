@@ -10,8 +10,10 @@ import SwiftUI
 struct ContentView: View {
     @AppStorage("isSignedIn") var isSignedIn = false
     
-    @StateObject private var chatStore = ChatStore()
+//    @StateObject private var chatStore = ChatStore()
     @StateObject private var testStore = TestStore()
+    @StateObject private var taskStore = TaskStore()
+    @StateObject private var wrongQStore = WrongQuestionsStore()
     @StateObject private var userAttribute = UserAttributeViewModel()
 
     var body: some View {
@@ -21,10 +23,10 @@ struct ContentView: View {
                     .tabItem {
                         Image("home")
                     }
-                ChatView()
-                    .tabItem {
-                        Image("chat")
-                    }
+//                ChatView()
+//                    .tabItem {
+//                        Image("chat")
+//                    }
                 ProfileView()
                     .tabItem{
                         Image("profile")
@@ -32,11 +34,14 @@ struct ContentView: View {
             }
             .accentColor(Color(.systemTeal))
             .onAppear {
-                chatStore.setup()   // loads conversations and settings
-                testStore.setup()   // loads tests and userTests
+//                chatStore.setup()
+                testStore.setup()
+                taskStore.setup()
+                wrongQStore.setup()
                 userAttribute.setup()
             }
-            .environmentObject(chatStore)
+            .environmentObject(taskStore)
+            .environmentObject(wrongQStore)
             .environmentObject(testStore)
             .environmentObject(userAttribute)
         } else {

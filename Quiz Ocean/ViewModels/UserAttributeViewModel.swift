@@ -10,7 +10,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class UserAttributeViewModel: ObservableObject {
-    @Published var userName = "" {
+    @Published var userName = "Bob" {
         didSet { updateDatabase(key: "userName", value: userName) }
     }
     @Published var days = 0

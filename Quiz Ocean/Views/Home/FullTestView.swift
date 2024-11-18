@@ -9,94 +9,185 @@ import SwiftUI
 
 struct FullTestView: View {
     @ObservedObject var test: TestViewModel
-    @State var userTest: UserTestViewModel?
-    @State private var answers: [String]
-    @Binding var path: [String]
-    @State private var isTimeout = false
+    var testTitle: String
+    @State private var tempAnswers: [String] = []
+    @State private var isDataLoaded: Bool = false
     
-    init(test: TestViewModel, userTest: UserTestViewModel?, path: Binding<[String]>) {
-        self._test = ObservedObject(wrappedValue: test)
-        self.userTest = userTest
-        if let answers = userTest?.userAnswers.compactMap({ $0.answer }), !answers.isEmpty {
-            self._answers = State(initialValue: answers)
-        } else {
-            self._answers = State(initialValue: [String](repeating: "", count: test.questionIDs.count))
-        }
-        self._path = path
+    init(test: TestViewModel, testTitle: String) {
+        self.test = test
+        self.testTitle = testTitle
     }
     
     var body: some View {
-        if isTimeout {
-            // 导入到一个空页面
-            VStack {
-                Text("Failed to load questions.")
-                Button("Back") {
-                    path.removeLast() // 返回到上一个页面
+        NavigationView {
+            VStack{
+                if let score = test.score {
+                    Text("Score: \(score)")
+                        .font(.title2)
+                        .padding()
+                        .foregroundColor(.green)
                 }
-                .padding()
-            }
-        } else {
-            List {
-                if userTest?.score != nil {
-                    ForEach(Array(userTest!.userAnswers.enumerated()), id: \.offset) { (index, userAnswer)in
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text("\(index+1). \(userAnswer.question)")
-                                Spacer()
-                                Text(userAnswer.answer)
-                                Text(userAnswer.isCorrect ? "✔" : "❌")
-                                    .foregroundColor(userAnswer.isCorrect ? .green : .red)
-                            }
-                        }
+                
+                List {
+                    ForEach(Array(test.questions.enumerated()), id: \.element.id) { index, question in
+                        QuestionView(
+                            index: index,
+                            question: question,
+                            userAnswer: test.userAnswers?[index],
+                            tempAnswer: $tempAnswers[index]
+                        )
                     }
-                } else if test.downloadedQuestions != nil {
-                    ForEach(Array(test.downloadedQuestions!.enumerated()), id: \.offset) { (index, userAnswer)in
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text("\(index+1). \(userAnswer.content)")
-                                Spacer()
-                                TextField("Your Answer", text: $answers[index])
-                                    .frame(width: 150)
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                            }
-                        }
-                    }
-                    HStack {
-                        Spacer()
-                        Button("Submit", action: submitAnswers)
+                }
+                
+                if test.userAnswers == nil {
+                    Button(action: {
+                        test.submitTest()
+                    }) {
+                        Text("Submit")
                             .padding()
-                        Spacer()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .padding()
                     }
-                } else {
-                    ProgressView("Loading questions...")
-                        .onAppear {
-                            test.fetchQuestions()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 10) { // 设置超时时间，例如 10 秒
-                                if test.downloadedQuestions == nil {
-                                    isTimeout = true // 标记为超时
-                                }
-                            }
-                        }
                 }
+            }
+            .navigationTitle(testTitle)
+            .onAppear {
+                setupTempAnswers()
             }
         }
     }
     
-    private func submitAnswers() {
-        let userAnswers: [UserAnswer] = zip(test.downloadedQuestions!, answers).map { (question, userAnswer) in
-            return UserAnswer(question: question.content, answer: question.answer, userAnswer: userAnswer)
+    private func setupTempAnswers() {
+        test.fetchData {
+            self.tempAnswers = Array(repeating: "", count: test.questions.count)
+            self.isDataLoaded = true
         }
+    }
+    
+}
+
+struct QuestionView: View {
+    let index: Int
+    let question: Question
+    let userAnswer: String?
+    @Binding var tempAnswer: String
+
+    @State private var isExpanded: Bool = false
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("\(index + 1). \(question.content)")
+                .font(.headline)
+            
+            // 显示图片（如果有）
+            if !question.imageUrl.isEmpty {
+                AsyncImage(url: URL(string: question.imageUrl)) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: 200)
+                } placeholder: {
+                    ProgressView()
+                }
+            }
+            
+            // 根据题目类型显示不同视图
+            switch Question.QuestionType(rawValue: question.type) {
+            case .multipleChoice:
+                MultipleChoiceView(question: question, selectedAnswer: $tempAnswer, userAnswer: userAnswer)
+                
+            case .blankFilling:
+                BlankFillingView(question: question, userInput: $tempAnswer, userAnswer: userAnswer)
+                
+            default:
+                Text("Unknown Question Type")
+                    .foregroundColor(.red)
+            }
+            
+            // 显示对错标记
+            if let userAnswer = userAnswer {
+                let isCorrect = userAnswer == question.answer
+                HStack {
+                    Spacer()
+                    Text(isCorrect ? "Right" : "Wrong")
+                        .foregroundColor(isCorrect ? .green : .red)
+                        .bold()
+                }
+            }
+            
+            // 下拉显示答案和解释
+            DisclosureGroup("Show Answer & Explanation", isExpanded: $isExpanded) {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Correct Answer: \(question.answer)")
+                        .foregroundColor(.blue)
+                    if !question.explanation.isEmpty {
+                        Text("Explanation: \(question.explanation)")
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+        }
+        .padding()
+        .background(Color.gray.opacity(0.1))
+        .cornerRadius(10)
+        .padding(.horizontal)
+    }
+}
+
+struct MultipleChoiceView: View {
+    let question: Question
+    @Binding var selectedAnswer: String
+    let userAnswer: String?
+    
+    var body: some View {
+        let shuffledCandidates = question.candidates?.shuffled() ?? []
         
-        let score = userAnswers.filter {$0.isCorrect}.count * 100 / test.downloadedQuestions!.count
-        
-        if let existingUserTest = userTest {
-            existingUserTest.userAnswers = userAnswers
-            existingUserTest.score = score
-            userTest = existingUserTest
-            userTest!.uploadUserTest()
+        ForEach(shuffledCandidates, id: \.self) { candidate in
+            Button(action: {
+                selectedAnswer = candidate
+            }) {
+                HStack {
+                    Text(candidate)
+                    Spacer()
+                    if let userAnswer = userAnswer {
+                        if userAnswer == candidate {
+                            Image(systemName: userAnswer == question.answer ? "checkmark.circle" : "xmark.circle")
+                                .foregroundColor(userAnswer == question.answer ? .green : .red)
+                        }
+                    } else if selectedAnswer == candidate {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.blue)
+                    }
+                }
+                .padding()
+                .background(Color.white)
+                .cornerRadius(8)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.blue, lineWidth: selectedAnswer == candidate ? 2 : 0)
+                )
+            }
+        }
+    }
+}
+
+struct BlankFillingView: View {
+    let question: Question
+    @Binding var userInput: String
+    let userAnswer: String?
+    
+    var body: some View {
+        if let userAnswer = userAnswer {
+            Text(userAnswer)
+                .foregroundColor(userAnswer == question.answer ? .green : .red)
+                .padding()
         } else {
-            UserTestViewModel.didTapSubmitButton(score: score, userAnswers: userAnswers)
-            path.removeLast()
+            TextField("Your answer", text: $userInput)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
         }
     }
 }

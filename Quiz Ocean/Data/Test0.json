@@ -1,48 +1,29 @@
 {
-    "level": "High School",
-    "subject": "Number Sense",
+    "level": "Middle",
+    "subject": "General Science",
     "year": "2024",
-    "paperIndex": "#23",
+    "paperIndex": "Kick Off",
     "questions": [
         {
-            "content": "What is 15% of 200?",
-            "answer": "30"
+            "content": "Julia wants to determine which brand of fertilizer is best for producing tomatoes. She uses three different brands of fertilizer on three separate groups of tomato plants, as well as a group of plants  that will receive no fertilizer. Julia uses cherry tomatoes for her plants. She makes sure to place them in a window sill where they all receive equal amounts of sunlight. The amount of water, the type of soil, and the temperature are kept the same for all of the plants. Over a period of eight weeks, she measures the amount and tomatoes produced by each group. What is the dependent variable in Julia’s experiment?",
+            "answer": "The number of tomatoes produced",
+            "candidates": [
+                "The type of tomato plants",
+                "The number of tomatoes produced",
+                "The group that received no fertilizer",
+                "The amount of sunlight the plants receive"
+            ]
         },
         {
-            "content": "If a rectangle has a length of 12 cm and a width of 5 cm, what is its area?",
-            "answer": "60"
-        },
-        {
-            "content": "What is the greatest common divisor (GCD) of 24 and 36?",
-            "answer": "12"
-        },
-        {
-            "content": "What is the least common multiple (LCM) of 4 and 5?",
-            "answer": "20"
-        },
-        {
-            "content": "Calculate the value of 8! (8 factorial).",
-            "answer": "40320"
-        },
-        {
-            "content": "What is the square root of 144?",
-            "answer": "12"
-        },
-        {
-            "content": "If x = 5, what is the value of 3x + 7?",
-            "answer": "22"
-        },
-        {
-            "content": "What is the sum of the angles in a triangle?",
-            "answer": "180"
-        },
-        {
-            "content": "If you have $50 and you spend $18.75, how much do you have left?",
-            "answer": "31.25"
-        },
-        {
-            "content": "What is the median of the set {3, 7, 9, 15, 20}?",
-            "answer": "9"
+            "content": "Why is the brand of fertilizer considered the independent variable in this experiment?",
+            "answer": "Because it is the factor that Julia is changing",
+            "candidates": [
+                "Because it does not influence the outcome",
+                "Because it is the factor that Julia is changing",
+                "Because it remains constant throughout the study",
+                "Because it is measured after the health of the plants"
+            ]
+            
         }
     ]
 }
