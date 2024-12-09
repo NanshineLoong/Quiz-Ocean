@@ -18,19 +18,24 @@ class TaskViewModel: ObservableObject, Identifiable {
     
     var date: Date  // scheduled date
     
-    var title: String {
-        return "\(subject); \(level); \(testYear); \(paperIndex)"
-    }
+    var title: String?
     
     private var ref = Database.root
     
-    init(id: String, subject: String, level: String, testYear: String, paperIndex: String, date: Date) {
+    init(id: String, subject: String, level: String, testYear: String, paperIndex: String, date: Date, title: String?=nil) {
         self.id = id
         self.subject = subject
         self.level = level
         self.testYear = testYear
         self.paperIndex = paperIndex
         self.date = date
+        self.title = title ?? subject
+    }
+    
+    // only provide a date to initialize a task
+    convenience init(date: Date, title: String) {
+        self.init(id: UUID().uuidString, subject: "", level: "", testYear: "", paperIndex: "", date: date, title: title)
+        
     }
     
     convenience init?(id: String, dict: [String: Any]) {

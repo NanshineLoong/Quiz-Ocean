@@ -9,39 +9,41 @@ import SwiftUI
 
 struct FullTestView: View {
     @ObservedObject var test: TestViewModel
-    var testTitle: String
-    @State private var tempAnswers: [String] = []
-    @State private var isDataLoaded: Bool = false
+    @Binding var path: NavigationPath
     
-    init(test: TestViewModel, testTitle: String) {
+    init(test: TestViewModel, path: Binding<NavigationPath>) {
         self.test = test
-        self.testTitle = testTitle
+        self._path = path
+        self.test.fetchData()
     }
     
     var body: some View {
-        NavigationView {
-            VStack{
-                if let score = test.score {
-                    Text("Score: \(score)")
+        if !test.isDataLoaded {
+            ProgressView()
+        } else {
+            ScrollView {
+                if test.isFinished {
+                    Text("Score: \(test.score)")
                         .font(.title2)
                         .padding()
                         .foregroundColor(.green)
                 }
-                
-                List {
+
+                VStack {
                     ForEach(Array(test.questions.enumerated()), id: \.element.id) { index, question in
                         QuestionView(
                             index: index,
                             question: question,
-                            userAnswer: test.userAnswers?[index],
-                            tempAnswer: $tempAnswers[index]
+                            userAnswer: $test.userAnswers[index],
+                            isFinished: test.isFinished
                         )
                     }
                 }
                 
-                if test.userAnswers == nil {
+                if !test.isFinished {
                     Button(action: {
                         test.submitTest()
+                        path.removeLast()
                     }) {
                         Text("Submit")
                             .padding()
@@ -53,27 +55,16 @@ struct FullTestView: View {
                     }
                 }
             }
-            .navigationTitle(testTitle)
-            .onAppear {
-                setupTempAnswers()
-            }
+            .navigationTitle(test.testTitle)
         }
     }
-    
-    private func setupTempAnswers() {
-        test.fetchData {
-            self.tempAnswers = Array(repeating: "", count: test.questions.count)
-            self.isDataLoaded = true
-        }
-    }
-    
 }
 
 struct QuestionView: View {
     let index: Int
     let question: Question
-    let userAnswer: String?
-    @Binding var tempAnswer: String
+    @Binding var userAnswer: String
+    let isFinished: Bool
 
     @State private var isExpanded: Bool = false
     
@@ -97,10 +88,10 @@ struct QuestionView: View {
             // 根据题目类型显示不同视图
             switch Question.QuestionType(rawValue: question.type) {
             case .multipleChoice:
-                MultipleChoiceView(question: question, selectedAnswer: $tempAnswer, userAnswer: userAnswer)
+                MultipleChoiceView(question: question, selectedAnswer: $userAnswer, isFinished: isFinished)
                 
             case .blankFilling:
-                BlankFillingView(question: question, userInput: $tempAnswer, userAnswer: userAnswer)
+                BlankFillingView(question: question, userInput: $userAnswer, isFinished: isFinished)
                 
             default:
                 Text("Unknown Question Type")
@@ -108,7 +99,7 @@ struct QuestionView: View {
             }
             
             // 显示对错标记
-            if let userAnswer = userAnswer {
+            if isFinished {
                 let isCorrect = userAnswer == question.answer
                 HStack {
                     Spacer()
@@ -116,16 +107,16 @@ struct QuestionView: View {
                         .foregroundColor(isCorrect ? .green : .red)
                         .bold()
                 }
-            }
-            
-            // 下拉显示答案和解释
-            DisclosureGroup("Show Answer & Explanation", isExpanded: $isExpanded) {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("Correct Answer: \(question.answer)")
-                        .foregroundColor(.blue)
-                    if !question.explanation.isEmpty {
-                        Text("Explanation: \(question.explanation)")
-                            .foregroundColor(.gray)
+                
+                // 下拉显示答案和解释
+                DisclosureGroup("", isExpanded: $isExpanded) {
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Answer: \(question.answer)")
+                            .foregroundColor(.blue)
+                        if !question.explanation.isEmpty {
+                            Text("Explanation: \(question.explanation)")
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
             }
@@ -140,23 +131,23 @@ struct QuestionView: View {
 struct MultipleChoiceView: View {
     let question: Question
     @Binding var selectedAnswer: String
-    let userAnswer: String?
+    let isFinished: Bool
     
     var body: some View {
-        let shuffledCandidates = question.candidates?.shuffled() ?? []
+        let candidates = question.candidates ?? []
         
-        ForEach(shuffledCandidates, id: \.self) { candidate in
+        ForEach(candidates, id: \.self) { candidate in
             Button(action: {
-                selectedAnswer = candidate
+                if !isFinished {
+                    selectedAnswer = candidate
+                }
             }) {
                 HStack {
                     Text(candidate)
                     Spacer()
-                    if let userAnswer = userAnswer {
-                        if userAnswer == candidate {
-                            Image(systemName: userAnswer == question.answer ? "checkmark.circle" : "xmark.circle")
-                                .foregroundColor(userAnswer == question.answer ? .green : .red)
-                        }
+                    if isFinished && selectedAnswer == candidate  {
+                        Image(systemName: selectedAnswer == question.answer ? "checkmark.circle" : "xmark.circle")
+                            .foregroundColor(selectedAnswer == question.answer ? .green : .red)
                     } else if selectedAnswer == candidate {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.blue)
@@ -177,12 +168,12 @@ struct MultipleChoiceView: View {
 struct BlankFillingView: View {
     let question: Question
     @Binding var userInput: String
-    let userAnswer: String?
+    let isFinished: Bool
     
     var body: some View {
-        if let userAnswer = userAnswer {
-            Text(userAnswer)
-                .foregroundColor(userAnswer == question.answer ? .green : .red)
+        if isFinished {
+            Text(userInput)
+                .foregroundColor(userInput == question.answer ? .green : .red)
                 .padding()
         } else {
             TextField("Your answer", text: $userInput)

@@ -57,7 +57,8 @@ class TestStore: ObservableObject {
         return Array(Set(tests.filter { $0.subject == subject }.map { $0.year })).sorted()
     }
     
-    func getPaperIndices(subject: String, level: String, year: String) -> [String] {
+    func getPaperIndices(subject: String?, level: String?, year: String?) -> [String] {
+        guard let subject = subject, let level = level, let year = year else { return [] }
         return tests
             .filter { $0.subject == subject && $0.level == level && $0.year == year }
             .map { $0.paperIndex }
@@ -139,24 +140,11 @@ class TestStore: ObservableObject {
     
     func isTestFinished(testID: String, completion: @escaping (Bool) -> Void) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        ref.child("userTests/\(uid)/\(testID)").observeSingleEvent(of: .value) { snapshot in
+        ref.child("user-test/\(uid)/\(testID)").observeSingleEvent(of: .value) { snapshot in
             completion(snapshot.exists())
         }
     }
-    
-    deinit {
-        // Remove observer when this instance is deallocated
-        if let refHandle = refHandle {
-            ref.child("tests").removeObserver(withHandle: refHandle)
-        }
-    }
-    
-    
-    
-//    func findUserTestFromTest(from test: TestViewModel) -> UserTestViewModel? {
-//        userTests.first { $0.testid == test.id }
-//    }
-//    
+
     func filterTestsFromSubject(from subject: String) -> [StaticTest] {
         tests.filter {$0.subject == subject}
     }

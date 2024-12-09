@@ -43,7 +43,7 @@ class TaskStore: ObservableObject {
         }
     }
     
-    func updateTask(subject: String, level: String, testYear: String, paperIndex: String, date: Date) {
+    func addTask(subject: String, level: String, testYear: String, paperIndex: String, date: Date) {
         guard let uid = getCurrentUserID() else { return }
         let newTaskRef = ref.child("tasks/\(uid)").childByAutoId()
         let taskData: [String: Any] = [
@@ -63,4 +63,25 @@ class TaskStore: ObservableObject {
         }
     }
     
+    // update existed task
+    func updateTask(task: TaskViewModel, date: Date) {
+        guard let uid = getCurrentUserID() else { return }
+        let taskRef = ref.child("tasks/\(uid)").child(task.id)
+        let taskData: [String: Any] = [
+            "subject": task.subject,
+            "level": task.level,
+            "testYear": task.testYear,
+            "paperIndex": task.paperIndex,
+            "date": date.timeIntervalSince1970
+        ]
+        
+        taskRef.setValue(taskData) { error, _ in
+            if let error = error {
+                print("Failed to update task: \(error.localizedDescription)")
+            } else {
+                print("Task updated successfully")
+            }
+        }
+    }
+        
 }

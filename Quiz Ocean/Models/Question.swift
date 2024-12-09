@@ -58,6 +58,4 @@ struct Question: Identifiable {
             "type": type
         ]
     }
-    
-    
 }

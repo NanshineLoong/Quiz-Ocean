@@ -9,26 +9,56 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-class TestViewModel: ObservableObject, Hashable{
+class TestViewModel: ObservableObject, Hashable {
     @Published var questions: [Question] = []
-    @Published var userAnswers: [String]?
-    @Published var score: Int?
+    @Published var userAnswers: [String]
+    @Published var score: Int = 0
+    @Published var isDataLoaded = false
+    @Published var isFinished = false
+    
     var testId: String?
     var questionIDs: [String]
-        
+    var testTitle: String
     
     private var ref = Database.root
     
-    init(questionIDs: [String], testId: String?=nil) {
+    init(questionIDs: [String], testId: String?=nil, testTitle: String="Test") {
         self.questionIDs = questionIDs
         self.testId = testId
+        self.testTitle = testTitle
+        self.userAnswers = Array(repeating: "", count: questionIDs.count)
     }
     
     func getCurrentUserID() -> String? {
         return Auth.auth().currentUser?.uid
     }
     
-/// 从 Firebase 下载用户的答案，并存储在 userAnswers 中
+    /// 综合调用 fetchQuestions 和 fetchUserAnswers，并在完成后执行 completion
+    func fetchData() {
+        // 创建 Dispatch Group
+        let dispatchGroup = DispatchGroup()
+        
+        // 下载问题数据
+        dispatchGroup.enter()
+        fetchQuestions {
+            dispatchGroup.leave()
+        }
+        
+        // 下载用户答案数据
+        if let testId = testId {
+            dispatchGroup.enter()
+            fetchUserAnswers(testId: testId) {
+                dispatchGroup.leave()
+            }
+        }
+        
+        // 在所有任务完成后设置 isDataLoaded
+        dispatchGroup.notify(queue: .main) {
+            self.isDataLoaded = true
+        }
+    }
+
+    /// 从 Firebase 下载用户的答案，并存储在 userAnswers 中
     private func fetchUserAnswers(testId: String, completion: @escaping () -> Void) {
         guard let uid = getCurrentUserID() else {
             print("Error fetching user answers: No user ID found")
@@ -37,8 +67,9 @@ class TestViewModel: ObservableObject, Hashable{
         }
         ref.child("user-test/\(uid)/\(testId)").observeSingleEvent(of: .value) { snapshot in
             if let value = snapshot.value as? [String: Any] {
-                self.userAnswers = value["userAnswers"] as? [String]
+                self.userAnswers = value["userAnswers"] as? [String] ?? Array(repeating: "", count: self.questionIDs.count)
                 self.score = value["score"] as? Int ?? 0
+                self.isFinished = true
             }
             completion()
         }
@@ -69,43 +100,17 @@ class TestViewModel: ObservableObject, Hashable{
         }
     }
 
-    /// 综合调用 fetchQuestions 和 fetchUserAnswers，并在完成后执行 completion
-    func fetchData(completion: @escaping () -> Void) {
-        // 使用 DispatchGroup 同步两个异步操作
-        let dispatchGroup = DispatchGroup()
-
-        // 下载问题数据
-        dispatchGroup.enter()
-        fetchQuestions {
-            dispatchGroup.leave()
-        }
-
-        // 下载用户答案数据
-        if let testId = testId {
-            dispatchGroup.enter()
-            fetchUserAnswers(testId: testId) {
-                dispatchGroup.leave()
-            }
-        }
-
-        // 所有操作完成后调用 completion
-        dispatchGroup.notify(queue: .main) {
-            completion()
-        }
-    }
-    
     
     func submitTest() {
         guard let userID = getCurrentUserID() else {
             print("Error submitting test: No user ID found")
             return
         }
-        guard let userAnswers = self.userAnswers else { return }
-        score = zip(userAnswers, questions).filter { $0.0 == $0.1.answer }.count * 5
+        score = zip(userAnswers, questions).filter { $0.0 == $0.1.answer }.count * 10
         if let testId = testId {
             ref.child("user-test/\(userID)/\(testId)").setValue([
                 "userAnswers": userAnswers,
-                "score": score ?? 0
+                "score": score
             ])
         }
     }

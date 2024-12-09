@@ -17,35 +17,35 @@ struct ContentView: View {
     @StateObject private var userAttribute = UserAttributeViewModel()
 
     var body: some View {
-        if isSignedIn {
-            TabView {
-                HomeView()
-                    .tabItem {
-                        Image("home")
-                    }
-//                ChatView()
-//                    .tabItem {
-//                        Image("chat")
-//                    }
-                ProfileView()
-                    .tabItem{
-                        Image("profile")
-                    }
+        ZStack {
+            Color.blue
+                .edgesIgnoringSafeArea(.all)
+            
+            if isSignedIn {
+                TabView {
+                    HomeView()
+                        .tabItem {
+                            Image("home")
+                        }
+                    ProfileView()
+                        .tabItem{
+                            Image("profile")
+                        }
+                }
+                .background(Color.clear)
+                .onAppear {
+                    testStore.setup()
+                    taskStore.setup()
+                    wrongQStore.setup()
+                    userAttribute.setup()
+                }
+                .environmentObject(taskStore)
+                .environmentObject(wrongQStore)
+                .environmentObject(testStore)
+                .environmentObject(userAttribute)
+            } else {
+                LoginView()
             }
-            .accentColor(Color(.systemTeal))
-            .onAppear {
-//                chatStore.setup()
-                testStore.setup()
-                taskStore.setup()
-                wrongQStore.setup()
-                userAttribute.setup()
-            }
-            .environmentObject(taskStore)
-            .environmentObject(wrongQStore)
-            .environmentObject(testStore)
-            .environmentObject(userAttribute)
-        } else {
-            LoginView()
         }
     }
 }
@@ -53,4 +53,3 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-

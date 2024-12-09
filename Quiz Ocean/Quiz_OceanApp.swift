@@ -27,6 +27,8 @@ struct Quiz_OceanApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+//            ContentView()
+//                .applyBackground()
 //                .onChange(of: scenePhase) { newPhase in
 //                    // You may need to handle the inactive phase only.
 //                    if newPhase == .inactive || newPhase == .background {
@@ -36,7 +38,6 @@ struct Quiz_OceanApp: App {
 //                        // active phase: do nothing
 //                    }
 //                }
-//                .applyBackground()
         }
     }
 }

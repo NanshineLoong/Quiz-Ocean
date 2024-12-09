@@ -31,7 +31,7 @@ class UserAttributeViewModel: ObservableObject {
     private var ref = Database.root
     private var refHandle: DatabaseHandle?
     
-    private func getCurrentUserID() -> String? {
+    func getCurrentUserID() -> String? {
         return Auth.auth().currentUser?.uid
     }
     
